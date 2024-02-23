@@ -1,7 +1,7 @@
 ﻿# IDE files
-.idea/
-.vscode/
-.vs/
+/.idea/
+/.vscode/
+./vs/
 
 # other
 bin/
