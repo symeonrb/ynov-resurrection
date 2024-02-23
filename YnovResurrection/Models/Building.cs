@@ -2,7 +2,7 @@
 
 namespace YnovResurrection.Models;
 
-public class Building
+public class Building : IModel
 {
     
     [Key]

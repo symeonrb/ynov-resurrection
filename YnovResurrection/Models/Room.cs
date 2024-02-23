@@ -2,7 +2,7 @@
 
 namespace YnovResurrection.Models;
 
-public class Room
+public class Room : IModel
 {
     
     [Key]

@@ -2,7 +2,7 @@
 
 namespace YnovResurrection.Models;
 
-public class StudentGroup
+public class StudentGroup : IModel
 {
     
     [Key]

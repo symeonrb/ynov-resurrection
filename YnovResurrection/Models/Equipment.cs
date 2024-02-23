@@ -2,7 +2,7 @@
 
 namespace YnovResurrection.Models;
 
-public class Equipment
+public class Equipment : IModel
 {
     
     [Key]

@@ -2,7 +2,7 @@
 
 namespace YnovResurrection.Models;
 
-public class School
+public class School : IModel
 {
     
     [Key]
