@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using YnovResurrection.Models;
 
-namespace YnovResuction;
+namespace YnovResurrection;
 
 public class AppDb : DbContext
 {
