@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YnovResuction", "YnovResuction.csproj", "{F2CF24A0-7034-4170-B665-81FA9D68EA3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YnovResurrection", "YnovResurrection.csproj", "{F2CF24A0-7034-4170-B665-81FA9D68EA3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
