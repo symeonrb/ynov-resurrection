@@ -1,0 +1,7 @@
+﻿# IDE files
+.idea/
+.vscode/
+.vs/
+
+bin/
+obj/
