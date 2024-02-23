@@ -1,8 +1,11 @@
-﻿namespace YnovResurrection.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace YnovResurrection.Models;
 
 public class Equipment
 {
     
+    [Key]
     public string Id { get; set; }
     
     public string Type { get; set; }
