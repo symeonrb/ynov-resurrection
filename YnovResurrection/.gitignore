@@ -6,3 +6,5 @@
 # other
 bin/
 obj/
+
+appsettings.json
