@@ -21,5 +21,16 @@ public class RoomService : AService
         _appDb.Rooms.Add(room);
         Flush();
     }
+
+    /// <summary>
+    /// Find the specified room in the building
+    /// </summary>
+    /// <param name="building"></param>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    public Room? FindRoom(Building building, string name)
+    {
+        return _appDb.Rooms.SingleOrDefault(r => (r.Building == building && r.Name == name));
+    }
     
 }
