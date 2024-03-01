@@ -35,7 +35,7 @@ public class ModuleService : AService
     /// <param name="module">Module</param>
     /// <param name="teacherId">User id of teacher</param>
     /// <exception cref="Exception">In case teacher doesn't exist</exception>
-    public void SetTeacher(Module module, string teacherId) //TODO: rework this
+    public void SetTeacher(Module module, string teacherId)
     {
         var teacher = _appDb.Users.SingleOrDefault(user => user.Id == teacherId);
 
