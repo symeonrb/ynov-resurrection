@@ -10,7 +10,6 @@ public class Building : IModel
     
     public string Address { get; set; }
     
-    public int SchoolId { get; set; }
     public School School { get; set; }
     
 }
