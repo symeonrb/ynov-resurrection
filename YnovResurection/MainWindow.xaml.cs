@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using YnovResurection.Models;
+using YnovResurection.ViewModels;
 
 namespace YnovResurection
 {
@@ -20,9 +22,26 @@ namespace YnovResurection
     /// </summary>
     public partial class MainWindow : Window
     {
+        private RoomManager roomManager = new RoomManager();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Course biggest = roomManager.GetCourseWithMostStudents();
+
+            if (biggest != null)
+            {
+                // Display or use the lesson information
+                MessageBox.Show($"Course with most students: Course {biggest.Id} with {biggest.NumStudents} students.");
+            }
+            else
+            {
+                MessageBox.Show("No lessons available.");
+            }
         }
     }
 }
