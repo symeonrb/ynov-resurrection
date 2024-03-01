@@ -5,6 +5,13 @@ namespace YnovResurrection.Services;
 public class RoomService : AService
 {
 
+    /// <summary>
+    /// Create a room with specified parameters
+    /// </summary>
+    /// <param name="building"></param>
+    /// <param name="name"></param>
+    /// <param name="location"></param>
+    /// <param name="accessibility"></param>
     public void CreateRoom(Building building, string name, string location, string accessibility)
     {
         var room = new Room
