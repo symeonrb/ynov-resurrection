@@ -1,0 +1,31 @@
+﻿<Window x:Class="YnovResurrection.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YnovResurrection"
+        mc:Ignorable="d"
+        Title="Ynov Resurection" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Views/ynov_favicon_black.ico" FontFamily="Open Sans">
+
+    <Grid>
+        <!-- Menu --><!--
+        <ListBox Grid.Column="0" SelectionChanged="Menu_SelectionChanged">
+            <ListBoxItem Content="Accueil"/>
+            --><!-- Ajoutez autant d'éléments de menu que nécessaire --><!--
+        </ListBox>
+
+        --><!-- Frame --><!--
+        <Frame Name="mainFrame" NavigationUIVisibility="Hidden"/>-->
+        <DockPanel>
+            <!-- Menu -->
+            <StackPanel DockPanel.Dock="Top" Orientation="Vertical" Background="#FF1F9C90" Height="50">
+                <TextBlock Margin="5"><Hyperlink Click="Accueil_Click" Foreground="#FFFFFDFA">Accueil</Hyperlink></TextBlock>
+            </StackPanel>
+
+            <!-- Frame -->
+            <Frame Name="mainFrame" NavigationUIVisibility="Hidden"/>
+        </DockPanel>
+    </Grid>
+</Window>
