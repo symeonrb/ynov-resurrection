@@ -6,6 +6,26 @@ public class CourseService : AService
 {
 
     /// <summary>
+    /// Create a course with the given parameters
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="teacher"></param>
+    /// <param name="studentGroup"></param>
+    public void CreateCourse(string name, User teacher, StudentGroup studentGroup)
+    {
+        var course = new Course()
+        {
+            Name = name,
+            StudentGroup = studentGroup
+        };
+        
+        ApplyId(ref course);
+
+        _appDb.Courses.Add(course);
+        Flush();
+    }
+
+    /// <summary>
     /// Set course teacher
     /// </summary>
     /// <param name="course"></param>
