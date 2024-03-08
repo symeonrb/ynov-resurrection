@@ -25,7 +25,7 @@ namespace YnovResurrection.Views.Pages
             InitializeComponent();
         }
 
-        MainWindow MainWindow { get => Application.Current.MainWindow as MainWindow; }
+        MainWindow MainWindow { get => (MainWindow) Application.Current.MainWindow; }
 
         private void Menu1_Click(object sender, RoutedEventArgs e)
         {
