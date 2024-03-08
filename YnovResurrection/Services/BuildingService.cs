@@ -14,6 +14,7 @@ public class BuildingService : AService
         };
         
         ApplyId(ref building);
+        _appDb.Buildings.Add(building);
         Flush();
     }
     
