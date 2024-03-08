@@ -43,5 +43,16 @@ public class CourseService : AService
         course.Teacher = user;
         Flush();
     }
+
+    /// <summary>
+    /// Find the specified course
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="studentGroup"></param>
+    /// <returns></returns>
+    public Course? FindCourse(string name, StudentGroup studentGroup)
+    {
+        return _appDb.Courses.SingleOrDefault(c => c.Name == name && c.StudentGroup == studentGroup);
+    }
     
 }
