@@ -1,4 +1,5 @@
-﻿using YnovResurrection.Models;
+﻿using System.Collections;
+using YnovResurrection.Models;
 
 namespace YnovResurrection.Services;
 
@@ -34,6 +35,11 @@ public class StudentGroupService : AService
     {
         group.Students.Add(student);
         Flush();
+    }
+
+    public ICollection<StudentGroup> List()
+    {
+        return _appDb.StudentGroups.ToList();
     }
     
 }

@@ -54,5 +54,10 @@ public class CourseService : AService
     {
         return _appDb.Courses.SingleOrDefault(c => c.Name == name && c.StudentGroup == studentGroup);
     }
+
+    public ICollection<Course> List()
+    {
+        return _appDb.Courses.ToList();
+    }
     
 }

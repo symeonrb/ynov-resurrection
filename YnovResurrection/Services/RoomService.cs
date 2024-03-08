@@ -39,5 +39,10 @@ public class RoomService : AService
     {
         return _appDb.Rooms.SingleOrDefault(r => (r.Building == building && r.Name == name));
     }
+
+    public ICollection<Room> List()
+    {
+        return _appDb.Rooms.ToList();
+    }
     
 }

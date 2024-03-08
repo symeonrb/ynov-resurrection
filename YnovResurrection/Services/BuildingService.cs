@@ -17,5 +17,10 @@ public class BuildingService : AService
         _appDb.Buildings.Add(building);
         Flush();
     }
+
+    public ICollection<Building> List()
+    {
+        return _appDb.Buildings.ToList();
+    }
     
 }

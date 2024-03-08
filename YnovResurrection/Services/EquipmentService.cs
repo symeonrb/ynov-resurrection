@@ -19,5 +19,10 @@ public class EquipmentService : AService
 
         return e;
     }
-    
+
+    public ICollection<Equipment> List()
+    {
+        return _appDb.Equipments.ToList();
+    }
+
 }
