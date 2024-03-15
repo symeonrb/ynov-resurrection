@@ -30,6 +30,7 @@
 
             <!-- Frame -->
             <Frame Name="sideMenuPage" NavigationUIVisibility="Hidden"/>
+            <Frame Name="schoolsPage" NavigationUIVisibility="Hidden"/>
             <Frame Name="buildingsPage" NavigationUIVisibility="Hidden"/>
         </DockPanel>
     </Grid>
