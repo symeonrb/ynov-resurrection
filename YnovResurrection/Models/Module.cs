@@ -10,7 +10,9 @@ public class Module : IModel
 
     public User Teacher { get; set; }
 
-    public StudentGroup StudentGroup { get; set; }
+    public ICollection<StudentGroup> StudentGroups { get; set; }
+
+    public ICollection<Course> Courses { get; set; }
 
     public string NeededEquipment { get; set; }
 

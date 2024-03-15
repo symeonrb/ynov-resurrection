@@ -9,12 +9,12 @@ public class BuildingService : AService
         var schools = SchoolService.Instance.List();
 
         var s1 = schools.ElementAt(0);
-        var b1 = new Building { Id = Guid.NewGuid().ToString(), Address = "123 Main St", School = s1 };
-        var b2 = new Building { Id = Guid.NewGuid().ToString(), Address = "456 Elm St", School = s1 };
+        var b1 = new Building { Id = Guid.NewGuid().ToString(), Address = "1 Swing St", School = s1 };
+        var b2 = new Building { Id = Guid.NewGuid().ToString(), Address = "2 Swing St", School = s1 };
         s1.Buildings = [b1, b2];
 
         var s2 = schools.ElementAt(1);
-        var b3 = new Building { Id = Guid.NewGuid().ToString(), Address = "123 Main St", School = s2 };
+        var b3 = new Building { Id = Guid.NewGuid().ToString(), Address = "000 Nowhere St", School = s2 };
         s2.Buildings = [b3];
 
         _fakeData = [ b1, b2, b3 ];

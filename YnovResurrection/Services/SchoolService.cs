@@ -8,8 +8,8 @@ public class SchoolService : AService
     {
         _fakeData =
         [
-            new School { Id = Guid.NewGuid().ToString(), Name = "Ynov" },
-            new School { Id = Guid.NewGuid().ToString(), Name = "Novy" },
+            new School { Id = Guid.NewGuid().ToString(), Name = "MusicHouse" },
+            new School { Id = Guid.NewGuid().ToString(), Name = "NobodyNovy" },
         ];
     }
 

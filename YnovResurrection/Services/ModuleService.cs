@@ -10,14 +10,25 @@ public class ModuleService : AService
     /// </summary>
     /// <param name="isRemote"></param>
     /// <param name="name"></param>
+    /// <param name="teacher"></param>
+    /// <param name="studentGroups"></param>
     /// <param name="neededEquipments"></param>
     /// <param name="allowSharedRoom"></param>
-    public Module CreateModule(bool isRemote, string name, string neededEquipments, bool allowSharedRoom)
+    public Module CreateModule(
+        bool isRemote,
+        string name,
+        User teacher,
+        ICollection<StudentGroup> studentGroups,
+        string neededEquipments,
+        bool allowSharedRoom
+    )
     {
         var module = new Module
         {
             IsRemote = isRemote,
             Name = name,
+            Teacher = teacher,
+            StudentGroups = studentGroups,
             NeededEquipment = neededEquipments,
             AllowSharedRoom = allowSharedRoom
         };
@@ -44,18 +55,19 @@ public class ModuleService : AService
             throw new Exception("Teacher were not found");
         }
 
-        SetTeacher(module, teacher);
+        module.Teacher = teacher;
+        Flush();
     }
 
     /// <summary>
-    /// Set module teacher
+    /// Find the specified course
     /// </summary>
-    /// <param name="module">Module</param>
-    /// <param name="teacher">Teacher</param>
-    public void SetTeacher(Module module, User teacher)
+    /// <param name="name"></param>
+    /// <param name="studentGroup"></param>
+    /// <returns></returns>
+    public IQueryable<Module> ModulesOfStudentGroup(StudentGroup studentGroup)
     {
-        module.Teacher = teacher;
-        Flush();
+        return _appDb.Modules.Where(m => m.StudentGroups.Contains(studentGroup));
     }
 
 }
