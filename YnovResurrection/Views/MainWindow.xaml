@@ -7,25 +7,30 @@
         mc:Ignorable="d"
         Title="Ynov Resurection" Height="600" Width="800"
         WindowStartupLocation="CenterScreen"
-        Icon="/Assets/Images/ynov_favicon_black.ico" FontFamily="Open Sans">
+        Icon="/Assets/Images/ynov_favicon_black.ico">
 
     <Grid>
-        <!-- Menu --><!--
-        <ListBox Grid.Column="0" SelectionChanged="Menu_SelectionChanged">
-            <ListBoxItem Content="Accueil"/>
-            --><!-- Ajoutez autant d'éléments de menu que nécessaire --><!--
-        </ListBox>
-
-        --><!-- Frame --><!--
-        <Frame Name="mainFrame" NavigationUIVisibility="Hidden"/>-->
         <DockPanel>
             <!-- Menu -->
-            <StackPanel DockPanel.Dock="Top" Orientation="Vertical" Background="#FF1F9C90" Height="50">
-                <TextBlock Margin="5"><Hyperlink Click="Accueil_Click" Foreground="#FFFFFDFA">Accueil</Hyperlink></TextBlock>
-            </StackPanel>
+            <!--Old color : FF1F9C90-->
+            <Grid DockPanel.Dock="Top" Background="#1D1D1D" Height="75">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Colonne pour l'image -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Colonne pour le lien Accueil -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Image -->
+                <Image Source="/Assets/Images/ynov_logo_black.jfif" Width="150" Height="75" HorizontalAlignment="Left"/>
+
+                <!-- Lien Accueil -->
+                <TextBlock Grid.Column="1" Margin="5" VerticalAlignment="Center"><Hyperlink Click="Accueil_Click" Foreground="#FFFFFDFA">Accueil</Hyperlink></TextBlock>
+            </Grid>
 
             <!-- Frame -->
-            <Frame Name="mainFrame" NavigationUIVisibility="Hidden"/>
+            <Frame Name="sideMenuPage" NavigationUIVisibility="Hidden"/>
+            <Frame Name="buildingsPage" NavigationUIVisibility="Hidden"/>
         </DockPanel>
     </Grid>
 </Window>

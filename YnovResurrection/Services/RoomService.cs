@@ -12,7 +12,7 @@ public class RoomService : AService
             Accessibility = accessibility,
             Location = location,
             Name = name,
-            
+
             Building = building
         };
 
@@ -21,5 +21,5 @@ public class RoomService : AService
         _appDb.Rooms.Add(room);
         Flush();
     }
-    
+
 }
