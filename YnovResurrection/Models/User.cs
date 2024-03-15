@@ -16,6 +16,6 @@ public class User : IModel
     
     public string Password { get; set; }
     
-    public ICollection<Course> Courses { get; set; }
+    public ICollection<Module> Modules { get; set; }
     
 }
