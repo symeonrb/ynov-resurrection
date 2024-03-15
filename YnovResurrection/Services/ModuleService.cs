@@ -27,7 +27,7 @@ public class ModuleService : AService
 
         return module;
     }
-    
+
 
     /// <summary>
     /// Set module teacher
@@ -57,5 +57,5 @@ public class ModuleService : AService
         module.Teacher = teacher;
         Flush();
     }
-    
+
 }

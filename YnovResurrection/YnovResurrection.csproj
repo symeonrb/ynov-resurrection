@@ -9,7 +9,18 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Assets\Images\ynov_favicon_black.ico" />
+      <None Remove="Assets\Images\ynov_logo_black.jfif" />
+      <None Remove="Views\ynov_favicon_black.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Assets\Images\ynov_favicon_black.ico" />
+      <Resource Include="Assets\Images\ynov_logo_black.jfif" />
     </ItemGroup>
 
 </Project>

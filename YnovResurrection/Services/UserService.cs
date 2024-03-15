@@ -14,11 +14,11 @@ public class UserService : AService
             Email = email,
             //Password = 
         };
-        
+
         ApplyId(ref user);
-        
+
         _appDb.Add(user);
         Flush();
     }
-    
+
 }
