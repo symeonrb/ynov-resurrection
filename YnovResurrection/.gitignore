@@ -1,0 +1,10 @@
+﻿# IDE files
+/.idea/
+/.vscode/
+./vs/
+
+# other
+bin/
+obj/
+
+appsettings.json
