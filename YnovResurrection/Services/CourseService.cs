@@ -11,12 +11,12 @@ public class CourseService : AService
     /// <param name="name"></param>
     /// <param name="teacher"></param>
     /// <param name="studentGroup"></param>
-    public void CreateCourse(string name, User teacher, StudentGroup studentGroup)
+    public void CreateCourse(string name, User teacher, List<StudentGroup> studentGroups)
     {
         var course = new Course()
         {
             Name = name,
-            StudentGroup = studentGroup
+            StudentGroups = studentGroups
         };
         
         ApplyId(ref course);
@@ -52,7 +52,7 @@ public class CourseService : AService
     /// <returns></returns>
     public Course? FindCourse(string name, StudentGroup studentGroup)
     {
-        return _appDb.Courses.SingleOrDefault(c => c.Name == name && c.StudentGroup == studentGroup);
+        return _appDb.Courses.SingleOrDefault(c => c.Name == name && c.StudentGroups.Contains(studentGroup));
     }
 
     public ICollection<Course> List()
