@@ -4,18 +4,24 @@ namespace YnovResurrection.Services;
 
 public class CourseService : AService
 {
+    private CourseService()
+    {
+    }
+
+    public static CourseService Instance { get; } = new();
 
     /// <summary>
     /// Create a course with the given parameters
     /// </summary>
     /// <param name="name"></param>
     /// <param name="teacher"></param>
-    /// <param name="studentGroup"></param>
+    /// <param name="studentGroups"></param>
     public void CreateCourse(string name, User teacher, List<StudentGroup> studentGroups)
     {
         var course = new Course()
         {
             Name = name,
+            Teacher = teacher,
             StudentGroups = studentGroups
         };
         

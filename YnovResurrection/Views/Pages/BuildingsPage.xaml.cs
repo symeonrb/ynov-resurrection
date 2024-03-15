@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using YnovResurrection.Models;
+using YnovResurrection.Services;
 
 namespace YnovResurrection.Views.Pages
 {
@@ -14,20 +15,7 @@ namespace YnovResurrection.Views.Pages
             InitializeComponent();
 
             // Définir le DataContext de la page sur lui-même (this)
-            listBuildings.ItemsSource = Buildings();
-        }
-
-        public static List<Building> Buildings()
-        {
-            List<Building> buildings =
-            [
-                // Ajouter quelques bâtiments de test
-                new Building { Id = Guid.NewGuid().ToString(), Address = "123 Main St", School = new School() },
-                new Building { Id = Guid.NewGuid().ToString(), Address = "456 Elm St", School = new School() },
-                new Building { Id = Guid.NewGuid().ToString(), Address = "789 Oak St", School = new School() },
-            ];
-
-            return buildings;
+            listBuildings.ItemsSource = BuildingService.Instance.List();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
