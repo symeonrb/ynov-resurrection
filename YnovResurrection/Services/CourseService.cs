@@ -4,11 +4,19 @@ namespace YnovResurrection.Services;
 
 public class CourseService : AService
 {
-    private CourseService()
-    {
-    }
 
-    public static CourseService Instance { get; } = new();
+    /// <summary>
+    /// Create a course with the given parameters
+    /// </summary>
+    public void CreateCourse(Module module)
+    {
+        var course = new Course();
+        
+        ApplyId(ref course);
+
+        _appDb.Courses.Add(course);
+        Flush();
+    }
 
     public ICollection<Course> List()
     {
