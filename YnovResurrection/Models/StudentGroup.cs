@@ -2,14 +2,12 @@
 
 namespace YnovResurrection.Models;
 
-public class StudentGroup : IModel
+public class StudentGroup(string id, string name, ICollection<User> students) : IModel
 {
-
     [Key]
-    public string Id { get; set; }
+    public string Id { get; set; } = id;
 
-    public string Name { get; set; }
+    public string Name { get; set; } = name;
 
-    public ICollection<User> Students { get; set; }
-
+    public ICollection<User> Students { get; set; } = students;
 }

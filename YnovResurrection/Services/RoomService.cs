@@ -11,54 +11,24 @@ public class RoomService : AService
         var buildings = BuildingService.Instance.List();
 
         var b1 = buildings.ElementAt(0);
-        var r1 = new Room
-        {
-            Id = Guid.NewGuid().ToString(),
-            Building = b1,
-            Name = "a101"
-        };
-        var r2 = new Room
-        {
-            Id = Guid.NewGuid().ToString(),
-            Building = b1,
-            Name = "a102"
-        };
-        var r3 = new Room
-        {
-            Id = Guid.NewGuid().ToString(),
-            Building = b1,
-            Name = "a103"
-        };
-        b1.Rooms = [r1, r2, r3];
+        CreateRoom(building: b1, name: "a101");
+        CreateRoom(building: b1, name: "a102");
+        CreateRoom(building: b1, name: "a103");
+        b1.Rooms = _fakeData.Where(r => r.Building.Id == b1.Id).ToList();
 
         var b2 = buildings.ElementAt(1);
-        var r4 = new Room {
-            Id = Guid.NewGuid().ToString(),
-            Building = b2,
-            Name = "b101",
-        };
-        var r5 = new Room
-        {
-            Id = Guid.NewGuid().ToString(),
-            Building = b2,
-            Name = "b102",
-        };
-        b2.Rooms = [r4, r5];
+        CreateRoom(building: b2, name: "b101");
+        CreateRoom(building: b2, name: "b102");
+        b2.Rooms = _fakeData.Where(r => r.Building.Id == b2.Id).ToList();
 
         var b3 = buildings.ElementAt(2);
-        var r6 = new Room {
-            Id = Guid.NewGuid().ToString(),
-            Building = b3,
-            Name = "Amphitheater",
-        };
-        b3.Rooms = [r6];
-
-        _fakeData = [ r1, r2, r3, r4, r5, r6 ];
+        CreateRoom(building: b3, name: "Amphitheater");
+        b3.Rooms = _fakeData.Where(r => r.Building.Id == b3.Id).ToList();
     }
 
     public static RoomService Instance { get; } = new();
 
-    private readonly List<Room> _fakeData;
+    private readonly List<Room> _fakeData = [];
 
     public static Room? FromId(string roomId)
     {
@@ -70,21 +40,33 @@ public class RoomService : AService
         return Instance._fakeData.Where(r => r.Building.School.Id == schoolId);
     }
 
-    public void CreateRoom(Building building, string name, string location, string accessibility)
+    public void CreateRoom(Building building, string name, string? location=null, string? accessibility=null)
     {
-        var room = new Room
-        {
-            Accessibility = accessibility,
-            Location = location,
-            Name = name,
-            
-            Building = building
-        };
+        _fakeData.Add(
+            new Room(
+                id: Guid.NewGuid().ToString(),
+                building: building,
+                name: name,
+                equipments: [],
+                location: location,
+                accessibility: accessibility
+            )
+        );
 
-        ApplyId(ref room);
-
-        _appDb.Rooms.Add(room);
-        Flush();
+        // TODO :
+        // var room = new Room
+        // {
+        //     Accessibility = accessibility,
+        //     Location = location,
+        //     name: name,
+        //
+        //     building: building
+        // };
+        //
+        // ApplyId(ref room);
+        //
+        // _appDb.Rooms.Add(room);
+        // Flush();
     }
     
     /// <summary>

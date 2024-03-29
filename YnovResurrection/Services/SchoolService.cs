@@ -6,16 +6,38 @@ public class SchoolService : AService
 {
     private SchoolService()
     {
-        _fakeData =
-        [
-            new School { Id = Guid.NewGuid().ToString(), Name = "MusicHouse" },
-            new School { Id = Guid.NewGuid().ToString(), Name = "NobodyNovy" }, // unused school
-        ];
+        CreateSchool(name: "MusicHouse");
+        CreateSchool(name: "NobodyNovy"); // unused school
     }
 
     public static SchoolService Instance { get; } = new();
 
-    private readonly List<School> _fakeData;
+    private readonly List<School> _fakeData = [];
+
+    public void CreateSchool(string name)
+    {
+        _fakeData.Add(
+            new School(
+                id: Guid.NewGuid().ToString(),
+                name: name,
+                admins: [],
+                teachers: [],
+                buildings: []
+            )
+        );
+
+        // TODO :
+        // var school = new School
+        // {
+        //     Id = Guid.NewGuid().ToString(),
+        //     Name: name
+        // };
+        //
+        // ApplyId(ref school);
+        //
+        // _appDb.Schools.Add(school);
+        // Flush();
+    }
 
     public ICollection<School> List()
     {

@@ -8,9 +8,13 @@ public class EquipmentService : AService
     {
         var rooms = RoomService.Instance.List();
 
-        var chair = new Equipment{ Type = Equipment.chairType };
-        var table1Person = new Equipment{ Type = Equipment.table1PersonType };
-        var table2People = new Equipment{ Type = Equipment.table2PeopleType };
+        CreateEquipment(type: Equipment.ChairType);
+        CreateEquipment(type: Equipment.Table1PersonType);
+        CreateEquipment(type: Equipment.Table2PeopleType);
+
+        var chair = _fakeData.Single(e => e.Type == Equipment.ChairType);
+        var table1Person = _fakeData.Single(e => e.Type == Equipment.Table1PersonType);
+        var table2People = _fakeData.Single(e => e.Type == Equipment.Table2PeopleType);
 
         rooms.ElementAt(0).Equipments = [
             chair, chair,
@@ -38,27 +42,34 @@ public class EquipmentService : AService
             chair, chair, chair, chair, chair, chair, chair, chair, chair, chair, chair, chair, chair, chair,
             table2People, table2People, table2People, table2People, table2People, table2People, table2People,
         ];
-
-        _fakeData = rooms.SelectMany(room => room.Equipments).ToList();
     }
 
     public static EquipmentService Instance { get; } = new();
 
-    private readonly List<Equipment> _fakeData;
+    private readonly List<Equipment> _fakeData = [];
 
-    public Equipment CreateEquipment(string type, string tags)
+    public void CreateEquipment(string type, string? tags=null)
     {
-        var e = new Equipment
-        {
-            Type = type,
-            Tags = tags
-        };
-        
-        ApplyId(ref e);
-        _appDb.Equipments.Add(e);
-        Flush();
+        _fakeData.Add(
+            new Equipment(
+                id: Guid.NewGuid().ToString(),
+                type: type,
+                tags: tags
+            )
+        );
 
-        return e;
+        // TODO :
+        // var e = new Equipment
+        // {
+        //     Type = type,
+        //     Tags = tags
+        // };
+        //
+        // ApplyId(ref e);
+        // _appDb.Equipments.Add(e);
+        // Flush();
+        //
+        // return e;
     }
 
     public ICollection<Equipment> List()

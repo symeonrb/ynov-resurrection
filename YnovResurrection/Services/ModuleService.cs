@@ -14,86 +14,100 @@ public class ModuleService : AService
         var studyingFrench = studentGroups.ElementAt(2);
         var users = UserService.Instance.List();
 
-        var banjo = new Module
-        {
-            Id = Guid.NewGuid().ToString(),
-            School = musicHouse,
-            Name = "Banjo",
-            StudentGroup = bachelor1,
-            Teacher = users.First((u) => u.Username == "TeacherBanjo"),
-        };
-        var dj = new Module
-        {
-            Id = Guid.NewGuid().ToString(),
-            School = musicHouse,
-            Name = "DJ",
-            StudentGroup = bachelor2,
-            Teacher = users.First((u) => u.Username == "TeacherDJ"),
-        };
-        var guitareb1 = new Module
-        {
-            Id = Guid.NewGuid().ToString(),
-            School = musicHouse,
-            Name = "GuitareB1",
-            StudentGroup = bachelor1,
-            Teacher = users.First((u) => u.Username == "TeacherGuitare"),
-        };
-        var guitareb2 = new Module
-        {
-            Id = Guid.NewGuid().ToString(),
-            School = musicHouse,
-            Name = "GuitareB2",
-            StudentGroup = bachelor2,
-            Teacher = users.First((u) => u.Username == "TeacherGuitare"),
-        };
-        var french = new Module
-        {
-            Id = Guid.NewGuid().ToString(),
-            School = musicHouse,
-            Name = "Français",
-            StudentGroup = studyingFrench,
-            Teacher = users.First((u) => u.Username == "TeacherFrench"),
-        };
-
-        _fakeData = [ banjo, dj, guitareb1, guitareb2, french ];
+        CreateModule(
+            school: musicHouse,
+            name: "Banjo",
+            totalHours: 3,
+            teacher: users.First((u) => u.FirstName == "TeacherBanjo"),
+            studentGroup: bachelor1
+        );
+        CreateModule(
+            school: musicHouse,
+            name: "DJ",
+            totalHours: 3,
+            teacher: users.First((u) => u.FirstName == "TeacherDJ"),
+            studentGroup: bachelor2
+        );
+        CreateModule(
+            school: musicHouse,
+            name: "GuitareB1",
+            totalHours: 3,
+            teacher: users.First((u) => u.FirstName == "TeacherGuitare"),
+            studentGroup: bachelor1
+        );
+        CreateModule(
+            school: musicHouse,
+            name: "GuitareB2",
+            totalHours: 3,
+            teacher: users.First((u) => u.FirstName == "TeacherGuitare"),
+            studentGroup: bachelor2
+        );
+        CreateModule(
+            school: musicHouse,
+            name: "Français",
+            totalHours: 3,
+            teacher: users.First((u) => u.FirstName == "TeacherFrench"),
+            studentGroup: studyingFrench
+        );
     }
 
     public static ModuleService Instance { get; } = new();
 
-    private readonly List<Module> _fakeData;
+    private readonly List<Module> _fakeData = [];
 
     /// <summary>
     /// Create a module, and return it
     /// </summary>
-    /// <param name="isRemote"></param>
+    /// <param name="school"></param>
     /// <param name="name"></param>
+    /// <param name="totalHours"></param>
     /// <param name="teacher"></param>
     /// <param name="studentGroup"></param>
     /// <param name="neededEquipments"></param>
+    /// <param name="isRemote"></param>
     /// <param name="allowSharedRoom"></param>
-    public Module CreateModule(
-        bool isRemote,
+    public void CreateModule(
+        School school,
         string name,
+        int totalHours,
         User teacher,
         StudentGroup studentGroup,
-        string neededEquipments,
-        bool allowSharedRoom
+        string neededEquipments="",
+        bool isRemote=false,
+        bool allowSharedRoom=false
     )
     {
-        var module = new Module
-        {
-            IsRemote = isRemote,
-            Name = name,
-            Teacher = teacher,
-            StudentGroup = studentGroup,
-            NeededEquipment = neededEquipments,
-            AllowSharedRoom = allowSharedRoom
-        };
+        _fakeData.Add(
+            new Module(
+                id: Guid.NewGuid().ToString(),
+                school: school,
+                name: name,
+                totalHours: totalHours,
+                teacher: teacher,
+                studentGroup: studentGroup,
+                courses: [],
+                neededEquipment: neededEquipments,
+                isRemote: isRemote,
+                allowSharedRoom: allowSharedRoom
+            )
+        );
 
-        _appDb.Modules.Add(module);
-        Flush();
-
-        return module;
+        // TODO :
+        // var module = new Module
+        // {
+        //     School = school,
+        //     IsRemote = isRemote,
+        //     Name = name,
+        //     Teacher = teacher,
+        //     StudentGroup = studentGroup,
+        //     NeededEquipment = neededEquipments,
+        //     AllowSharedRoom = allowSharedRoom
+        // };
+        //
+        // _appDb.Modules.Add(module);
+        // Flush();
+        //
+        // return module;
     }
 
     public ICollection<Module> List()
@@ -123,7 +137,6 @@ public class ModuleService : AService
     /// <summary>
     /// Find the modules assignated to a StudentGroup
     /// </summary>
-    /// <param name="name"></param>
     /// <param name="studentGroup"></param>
     /// <returns></returns>
     public IQueryable<Module> ModulesOfStudentGroup(StudentGroup studentGroup)
