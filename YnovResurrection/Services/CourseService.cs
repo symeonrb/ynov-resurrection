@@ -92,17 +92,22 @@ public class CourseService : AService
 
     private readonly List<Course> _fakeData;
 
-    public void AssignRoomToCourse(Course course, Room room)
+    public void AssignRoomToCourse(Course course)
     {
         if (course.Room != null) return;
 
         var students = course.Module.StudentGroup.Students.Count;
-        var bigEnoughRooms = RoomService.FromSchoolId(course.Module.School.Id).Where((r) => r.SeatsCount >= students);
+        var bigEnoughRooms = RoomService.FromSchoolId(course.Module.School.Id).Where((r) => r.SeatsCount >= students).ToList();
 
-        if (!bigEnoughRooms.Any()) throw new Exception("No room is big enough for this student group");
+        if (bigEnoughRooms.Count == 0) throw new Exception("No room is big enough for this student group");
 
-        var courses = Instance.List();
+        var overlapingCourses = Instance.List().Where(c => CoursesOverlap(c, course));
+        var occupiedRooms = overlapingCourses.Select(c => c.Room);
+        var availibleRooms = bigEnoughRooms.Where(r => !occupiedRooms.Contains(r)).ToList();
 
+        if (availibleRooms.Count == 0) throw new Exception("No matching room is availible during this course");
+
+        course.Room = availibleRooms.First();
     }
 
     /// <summary>
@@ -121,5 +126,10 @@ public class CourseService : AService
     public ICollection<Course> List()
     {
         return _fakeData; // TODO : _appDb.Courses.ToList();
+    }
+
+    private bool CoursesOverlap(Course c1, Course c2)
+    {
+        return c1.StartTime < c2.EndTime && c2.StartTime < c1.EndTime;
     }
 }
