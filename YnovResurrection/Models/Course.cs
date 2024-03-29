@@ -1,6 +1,4 @@
-﻿using YnovResurrection.Services;
-
-namespace YnovResurrection.Models;
+﻿namespace YnovResurrection.Models;
 
 public class Course : IModel
 {
@@ -13,4 +11,7 @@ public class Course : IModel
     public DateTime EndTime { get; set; }
 
     public bool IsRemote { get; set; }
+
+    public Room? Room { get; set; }
+
 }

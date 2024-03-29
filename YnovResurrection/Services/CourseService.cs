@@ -94,7 +94,7 @@ public class CourseService : AService
 
     public void AssignRoomToCourse(Course course, Room room)
     {
-        if (FakeCourseAttributionService.RoomOf(course) != null) return;
+        if (course.Room != null) return;
 
         var students = course.Module.StudentGroup.Students.Count;
         var bigEnoughRooms = RoomService.FromSchoolId(course.Module.School.Id).Where((r) => r.SeatsCount >= students);
