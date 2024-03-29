@@ -12,4 +12,7 @@ public class Equipment : IModel
 
     public string Tags { get; set; }
 
+    public static string chairType = "chair";
+    public static string table1PersonType = "table1person";
+    public static string table2PeopleType = "table2people";
 }
