@@ -22,5 +22,10 @@ public class CourseService : AService
     {
         return _appDb.Courses.ToList();
     }
+
+    public void AssignRoomToCourse(Course course, Room room)
+    {
+
+    }
     
 }
