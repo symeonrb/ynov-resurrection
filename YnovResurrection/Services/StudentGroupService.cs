@@ -26,7 +26,7 @@ public class StudentGroupService : AService
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = "Students learning French",
-                Students = users.Take(new Range(4, 9)).ToList(),
+                Students = users.Take(new Range(7, 8)).ToList(),
             },
             new StudentGroup
             {

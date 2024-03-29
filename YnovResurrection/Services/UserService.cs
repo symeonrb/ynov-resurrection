@@ -25,6 +25,7 @@ public class UserService : AService
             new User { Id = Guid.NewGuid().ToString(), Username = "TeacherBanjo" },
             new User { Id = Guid.NewGuid().ToString(), Username = "TeacherDJ" },
             new User { Id = Guid.NewGuid().ToString(), Username = "TeacherGuitar" },
+            new User { Id = Guid.NewGuid().ToString(), Username = "TeacherFrench" },
         ];
     }
 

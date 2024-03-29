@@ -13,8 +13,8 @@ public class EquipmentService : AService
         var table2People = new Equipment{ Type = Equipment.table2PeopleType };
 
         rooms.ElementAt(0).Equipments = [
-            chair, chair, chair, chair,
-            table2People, table2People,
+            chair, chair,
+            table2People,
         ];
         rooms.ElementAt(1).Equipments = [
             chair, chair, chair, chair, chair, chair,

@@ -4,6 +4,56 @@ namespace YnovResurrection.Services;
 
 public class ModuleService : AService
 {
+    private ModuleService()
+    {
+        var studentGroups = StudentGroupService.Instance.List();
+        var bachelor1 = studentGroups.ElementAt(0);
+        var bachelor2 = studentGroups.ElementAt(1);
+        var studyingFrench = studentGroups.ElementAt(2);
+        var users = UserService.Instance.List();
+
+        var banjo = new Module
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = "Banjo",
+            StudentGroups = [ bachelor1 ],
+            Teacher = users.First((u) => u.Username == "TeacherBanjo"),
+        };
+        var dj = new Module
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = "DJ",
+            StudentGroups = [ bachelor2 ],
+            Teacher = users.First((u) => u.Username == "TeacherDJ"),
+        };
+        var guitareb1 = new Module
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = "GuitareB1",
+            StudentGroups = [ bachelor1 ],
+            Teacher = users.First((u) => u.Username == "TeacherGuitare"),
+        };
+        var guitareb2 = new Module
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = "GuitareB2",
+            StudentGroups = [ bachelor2 ],
+            Teacher = users.First((u) => u.Username == "TeacherGuitare"),
+        };
+        var french = new Module
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = "Français",
+            StudentGroups = [ studyingFrench ],
+            Teacher = users.First((u) => u.Username == "TeacherFrench"),
+        };
+
+        _fakeData = [ banjo, dj, guitareb1, guitareb2, french ];
+    }
+
+    public static ModuleService Instance { get; } = new();
+
+    private readonly List<Module> _fakeData;
 
     /// <summary>
     /// Create a module, and return it
@@ -60,7 +110,7 @@ public class ModuleService : AService
     }
 
     /// <summary>
-    /// Find the specified course
+    /// Find the modules assignated to a StudentGroup
     /// </summary>
     /// <param name="name"></param>
     /// <param name="studentGroup"></param>
