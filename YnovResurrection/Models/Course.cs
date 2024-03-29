@@ -14,4 +14,6 @@ public class Course : IModel
     
     public bool IsRemote { get; set; }
     
+    public ICollection<Room> Rooms { get; set; }
+    
 }
