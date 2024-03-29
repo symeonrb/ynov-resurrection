@@ -10,6 +10,6 @@ Il faut avoir à disposition un serveur MySQL dont nous connaissons les identifi
 - Commencer par cloner le projet
 - Installer les dépendances
 - Configurer les accès à la base dans le fichier `appsettings.json`
-- Lancer les migrations avec la commande ``
+- Lancer les migrations avec la commande `dotnet ef database update`
 
 # Lancement de l'application
