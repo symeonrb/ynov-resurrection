@@ -92,6 +92,14 @@ public class CourseService : AService
 
     private readonly List<Course> _fakeData;
 
+    public void AssignRoomToCourse(Course course, Room room)
+    {
+        if (FakeCourseAttributionService.RoomOf(course) != null) return;
+
+        var courses = CourseService.Instance.List();
+
+    }
+
     /// <summary>
     /// Create a course with the given parameters
     /// </summary>
@@ -107,12 +115,6 @@ public class CourseService : AService
 
     public ICollection<Course> List()
     {
-        return _appDb.Courses.ToList();
+        return _fakeData; // TODO : _appDb.Courses.ToList();
     }
-
-    public void AssignRoomToCourse(Course course, Room room)
-    {
-
-    }
-    
 }

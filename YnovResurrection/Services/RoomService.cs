@@ -60,6 +60,11 @@ public class RoomService : AService
 
     private readonly List<Room> _fakeData;
 
+    public static Room? FromId(string roomId)
+    {
+        return Instance._fakeData.SingleOrDefault((r) => r.Id == roomId);
+    }
+
     public void CreateRoom(Building building, string name, string location, string accessibility)
     {
         var room = new Room
