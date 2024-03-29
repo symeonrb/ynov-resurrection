@@ -8,6 +8,7 @@ public class School : IModel
     [Key]
     public string Id { get; set; }
     
+    [Required]
     public string Name { get; set; }
     
     public ICollection<User> Admins { get; set; }
