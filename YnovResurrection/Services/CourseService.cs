@@ -96,7 +96,12 @@ public class CourseService : AService
     {
         if (FakeCourseAttributionService.RoomOf(course) != null) return;
 
-        var courses = CourseService.Instance.List();
+        var students = course.Module.StudentGroup.Students.Count;
+        var bigEnoughRooms = RoomService.FromSchoolId(course.Module.School.Id).Where((r) => r.SeatsCount >= students);
+
+        if (!bigEnoughRooms.Any()) throw new Exception("No room is big enough for this student group");
+
+        var courses = Instance.List();
 
     }
 

@@ -3,6 +3,8 @@
 public class Module : IModel
 {
     public string Id { get; set; }
+
+    public School School { get; set; }
     
     public bool IsRemote { get; set; }
     
@@ -10,7 +12,7 @@ public class Module : IModel
     
     public User Teacher { get; set; }
 
-    public ICollection<StudentGroup> StudentGroups { get; set; }
+    public StudentGroup StudentGroup { get; set; }
 
     public ICollection<Course> Courses { get; set; }
 

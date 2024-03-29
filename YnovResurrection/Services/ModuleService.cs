@@ -6,6 +6,8 @@ public class ModuleService : AService
 {
     private ModuleService()
     {
+        var schools = SchoolService.Instance.List();
+        var musicHouse = schools.ElementAt(0);
         var studentGroups = StudentGroupService.Instance.List();
         var bachelor1 = studentGroups.ElementAt(0);
         var bachelor2 = studentGroups.ElementAt(1);
@@ -15,36 +17,41 @@ public class ModuleService : AService
         var banjo = new Module
         {
             Id = Guid.NewGuid().ToString(),
+            School = musicHouse,
             Name = "Banjo",
-            StudentGroups = [ bachelor1 ],
+            StudentGroup = bachelor1,
             Teacher = users.First((u) => u.Username == "TeacherBanjo"),
         };
         var dj = new Module
         {
             Id = Guid.NewGuid().ToString(),
+            School = musicHouse,
             Name = "DJ",
-            StudentGroups = [ bachelor2 ],
+            StudentGroup = bachelor2,
             Teacher = users.First((u) => u.Username == "TeacherDJ"),
         };
         var guitareb1 = new Module
         {
             Id = Guid.NewGuid().ToString(),
+            School = musicHouse,
             Name = "GuitareB1",
-            StudentGroups = [ bachelor1 ],
+            StudentGroup = bachelor1,
             Teacher = users.First((u) => u.Username == "TeacherGuitare"),
         };
         var guitareb2 = new Module
         {
             Id = Guid.NewGuid().ToString(),
+            School = musicHouse,
             Name = "GuitareB2",
-            StudentGroups = [ bachelor2 ],
+            StudentGroup = bachelor2,
             Teacher = users.First((u) => u.Username == "TeacherGuitare"),
         };
         var french = new Module
         {
             Id = Guid.NewGuid().ToString(),
+            School = musicHouse,
             Name = "Français",
-            StudentGroups = [ studyingFrench ],
+            StudentGroup = studyingFrench,
             Teacher = users.First((u) => u.Username == "TeacherFrench"),
         };
 
@@ -61,14 +68,14 @@ public class ModuleService : AService
     /// <param name="isRemote"></param>
     /// <param name="name"></param>
     /// <param name="teacher"></param>
-    /// <param name="studentGroups"></param>
+    /// <param name="studentGroup"></param>
     /// <param name="neededEquipments"></param>
     /// <param name="allowSharedRoom"></param>
     public Module CreateModule(
         bool isRemote,
         string name,
         User teacher,
-        ICollection<StudentGroup> studentGroups,
+        StudentGroup studentGroup,
         string neededEquipments,
         bool allowSharedRoom
     )
@@ -78,7 +85,7 @@ public class ModuleService : AService
             IsRemote = isRemote,
             Name = name,
             Teacher = teacher,
-            StudentGroups = studentGroups,
+            StudentGroup = studentGroup,
             NeededEquipment = neededEquipments,
             AllowSharedRoom = allowSharedRoom
         };
@@ -121,7 +128,7 @@ public class ModuleService : AService
     /// <returns></returns>
     public IQueryable<Module> ModulesOfStudentGroup(StudentGroup studentGroup)
     {
-        return _appDb.Modules.Where(m => m.StudentGroups.Contains(studentGroup));
+        return _appDb.Modules.Where(m => m.StudentGroup == studentGroup);
     }
 
 }

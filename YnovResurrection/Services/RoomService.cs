@@ -62,7 +62,12 @@ public class RoomService : AService
 
     public static Room? FromId(string roomId)
     {
-        return Instance._fakeData.SingleOrDefault((r) => r.Id == roomId);
+        return Instance._fakeData.SingleOrDefault(r => r.Id == roomId);
+    }
+
+    public static IEnumerable<Room> FromSchoolId(string schoolId)
+    {
+        return Instance._fakeData.Where(r => r.Building.School.Id == schoolId);
     }
 
     public void CreateRoom(Building building, string name, string location, string accessibility)

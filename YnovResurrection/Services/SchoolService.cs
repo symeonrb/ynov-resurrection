@@ -9,7 +9,7 @@ public class SchoolService : AService
         _fakeData =
         [
             new School { Id = Guid.NewGuid().ToString(), Name = "MusicHouse" },
-            new School { Id = Guid.NewGuid().ToString(), Name = "NobodyNovy" },
+            new School { Id = Guid.NewGuid().ToString(), Name = "NobodyNovy" }, // unused school
         ];
     }
 
