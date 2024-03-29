@@ -24,4 +24,15 @@ public class Room : IModel
 
     public ICollection<Equipment> Equipments { get; set; }
 
+    public int SeatsCount { get
+        {
+            var tables1Person = Equipments.Count(e => e.Type == Equipment.table1PersonType);
+            var tables2People = Equipments.Count(e => e.Type == Equipment.table2PeopleType);
+            var seatsFromTables = tables1Person + (tables2People * 2);
+
+            var chairs = Equipments.Count(e => e.Type == Equipment.chairType);
+
+            return Math.Min(seatsFromTables, chairs);
+        }
+    }
 }
