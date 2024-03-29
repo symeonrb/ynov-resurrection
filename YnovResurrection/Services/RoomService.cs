@@ -16,21 +16,18 @@ public class RoomService : AService
             Id = Guid.NewGuid().ToString(),
             Building = b1,
             Name = "a101"
-
         };
         var r2 = new Room
         {
             Id = Guid.NewGuid().ToString(),
             Building = b1,
             Name = "a102"
-
         };
         var r3 = new Room
         {
             Id = Guid.NewGuid().ToString(),
             Building = b1,
             Name = "a103"
-
         };
         b1.Rooms = [r1, r2, r3];
 

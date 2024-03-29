@@ -89,6 +89,10 @@ public class ModuleService : AService
         return module;
     }
 
+    public ICollection<Module> List()
+    {
+        return _fakeData; // TODO : _appDb.Equipments.ToList();
+    }
 
     /// <summary>
     /// Set module teacher
