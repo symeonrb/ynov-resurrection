@@ -16,4 +16,6 @@ public class Module : IModel
     
     public bool AllowSharedRoom { get; set; }
     
+    public int Hours { get; set; }
+    
 }
