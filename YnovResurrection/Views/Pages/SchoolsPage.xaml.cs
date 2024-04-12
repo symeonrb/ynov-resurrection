@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using YnovResurrection.Models;
 using YnovResurrection.Services;
 using YnovResurrection.ViewModels.Pages;
@@ -12,9 +13,34 @@ public partial class SchoolsPage : Page
     {
         InitializeComponent();
 
-        // Définir le DataContext de la page sur lui-même (this)
-        ListModels.ItemsSource = SchoolService.Instance.List();
+        AddColumnsToDataGrid();
     }
+
+    private void AddColumnsToDataGrid()
+    {
+        // Créer une liste de noms de propriétés à afficher dans les colonnes
+        List<string> propertyNames = typeof(School).GetProperties()
+            .Where(p => p.Name != "Id") // Exclure la propriété "Id"
+            .Select(p => p.Name)
+            .ToList();
+
+        // Parcourir la liste des noms de propriétés et ajouter une colonne pour chaque propriété
+        foreach (string propertyName in propertyNames)
+        {
+            // Créer une nouvelle colonne avec le nom de la propriété comme en-tête
+            DataGridTextColumn column = new()
+            {
+                Header = propertyName,
+
+                // Lier la colonne à la propriété correspondante
+                Binding = new Binding(propertyName)
+            };
+
+            // Ajouter la colonne à la DataGrid
+            ListModels.Columns.Add(column);
+        }
+    }
+
 
     private void DeleteButton_Click(object sender, RoutedEventArgs e)
     {
