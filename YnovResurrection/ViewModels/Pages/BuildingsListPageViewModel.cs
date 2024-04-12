@@ -8,11 +8,6 @@ namespace YnovResurrection.ViewModels.Pages
 {
     class BuildingsListPageViewModel : IDataListPageViewModel
     {
-
-        // public BuildingsListPageViewModel()
-        // {
-        // }
-
         public Type ModelType => typeof(Building);
 
         public Page? EditModel(DataListPage page, IModel? modelNullable)

@@ -8,9 +8,11 @@ namespace YnovResurrection.Views.Pages;
 
 public partial class DataListPage : Page // where T : class, IModel, new()
 {
-    public DataListPage()
+    public DataListPage(IDataListPageViewModel viewModel)
     {
         InitializeComponent();
+        DataContext = viewModel;
+        AddColumnsToDataGrid();
     }
 
     public void AddColumnsToDataGrid()

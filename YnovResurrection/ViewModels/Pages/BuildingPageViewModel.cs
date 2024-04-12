@@ -7,21 +7,17 @@ namespace YnovResurrection.ViewModels.Pages
     public class BuildingPageViewModel
     {
         public required DataListPage Page { get; set; }
-        public Building BuildingCopy { get; private set; }
-        public Building Building { get; set; }
+        public Building ModelCopy { get; private set; }
+        public Building Model { get; set; }
         public bool IsEditMode { get; set; } = false;
         public bool IsAddMode { get; set; } = false;
 
         public BuildingPageViewModel(Building building)
         {
-            Building = building;
-            BuildingCopy = IModel.Clone(Building);
+            Model = building;
+            ModelCopy = IModel.Clone(Model);
         }
 
-        public ICollection<School> Schools
-        {
-            get { return SchoolService.Instance.List(); }
-            // set { _BuildingsList = value; }
-        }
+        public ICollection<School> Schools => SchoolService.Instance.List();
     }
 }

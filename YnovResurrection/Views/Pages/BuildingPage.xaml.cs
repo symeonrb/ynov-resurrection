@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using YnovResurrection.Models;
+﻿using System.Windows;
 using YnovResurrection.Services;
 using YnovResurrection.ViewModels.Pages;
 
@@ -21,7 +7,7 @@ namespace YnovResurrection.Views.Pages
     /// <summary>
     /// Logique d'interaction pour BuildingPage.xaml
     /// </summary>
-    public partial class BuildingPage : Page
+    public partial class BuildingPage
     {
         public BuildingPage(BuildingPageViewModel viewModel)
         {
@@ -33,8 +19,8 @@ namespace YnovResurrection.Views.Pages
         {
             if (DataContext is not BuildingPageViewModel viewModel) return;
             BuildingService.Instance.CreateBuilding(
-                address: viewModel.BuildingCopy.Address,
-                school: viewModel.BuildingCopy.School
+                address: viewModel.ModelCopy.Address,
+                school: viewModel.ModelCopy.School
             );
             viewModel.Page.ListModels.Items.Refresh();
             NavigationService?.GoBack();
@@ -43,7 +29,7 @@ namespace YnovResurrection.Views.Pages
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (DataContext is not BuildingPageViewModel viewModel) return;
-            BuildingService.Instance.UpdateBuilding(building: viewModel.BuildingCopy);
+            BuildingService.Instance.UpdateBuilding(building: viewModel.ModelCopy);
             viewModel.Page.ListModels.Items.Refresh();
             NavigationService?.GoBack();
         }
@@ -51,7 +37,7 @@ namespace YnovResurrection.Views.Pages
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             // Revenir à la page précédente
-            NavigationService.GoBack();
+            NavigationService?.GoBack();
         }
     }
 }

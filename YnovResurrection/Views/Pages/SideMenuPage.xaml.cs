@@ -18,18 +18,13 @@ namespace YnovResurrection.Views.Pages
 
         private void Schools_Click(object sender, RoutedEventArgs e)
         {
-            Page page = new SchoolsPage();
-            SchoolsListPageViewModel viewModel = new();
-            page.DataContext = viewModel;
+            DataListPage page = new(new SchoolsListPageViewModel());
             MainWindow.MainPage.Navigate(page);
         }
 
         private void Buildings_Click(object sender, RoutedEventArgs e)
         {
-            DataListPage page = new();
-            BuildingsListPageViewModel viewModel = new();
-            page.DataContext = viewModel;
-            page.AddColumnsToDataGrid();
+            DataListPage page = new(new BuildingsListPageViewModel());
             MainWindow.MainPage.Navigate(page);
         }
 

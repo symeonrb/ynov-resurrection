@@ -22,7 +22,7 @@ namespace YnovResurrection.Views.Pages
             // TODO
 
             // Revenir à la page précédente
-            NavigationService.GoBack();
+            NavigationService?.GoBack();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -34,22 +34,22 @@ namespace YnovResurrection.Views.Pages
             if (DataContext is CoursePageViewModel viewModel)
             {
                 // Restaurer les valeurs du Course original
-                viewModel.Course.Module = viewModel.CourseCopy.Module;
-                viewModel.Course.StartTime = viewModel.CourseCopy.StartTime;
-                viewModel.Course.EndTime = viewModel.CourseCopy.EndTime;
-                viewModel.Course.IsRemote = viewModel.CourseCopy.IsRemote;
-                viewModel.Course.Room = viewModel.Course.Room;
+                viewModel.Model.Module = viewModel.ModelCopy.Module;
+                viewModel.Model.StartTime = viewModel.ModelCopy.StartTime;
+                viewModel.Model.EndTime = viewModel.ModelCopy.EndTime;
+                viewModel.Model.IsRemote = viewModel.ModelCopy.IsRemote;
+                viewModel.Model.Room = viewModel.ModelCopy.Room;
                 viewModel.Page.ListModels.Items.Refresh();
             }
 
             // Revenir à la page précédente
-            NavigationService.GoBack();
+            NavigationService?.GoBack();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             // Revenir à la page précédente
-            NavigationService.GoBack();
+            NavigationService?.GoBack();
         }
     }
 }
