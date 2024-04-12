@@ -16,6 +16,6 @@ namespace YnovResurrection.ViewModels.Pages
             Model = IModel.Clone(course);
         }
 
-        public ICollection<Module> Modules => ModuleService.Instance.List();
+        public IEnumerable<Module> Modules => ModuleService.Instance.FromSchoolId(Model.Module.School.Id);
     }
 }

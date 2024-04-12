@@ -72,6 +72,14 @@ public class CourseService : AService
             endTime: new DateTime(year: 2024, month: 9, day: 17, hour: 16, minute: 30, second: 0)
         );
         french.Courses = _fakeData.Where(c => c.Module.Id == french.Id).ToList();
+
+        var eloquence = modules.ElementAt(5);
+        CreateCourse(
+            module: eloquence,
+            startTime: new DateTime(year: 2024, month: 9, day: 17, hour: 13, minute: 30, second: 0),
+            endTime: new DateTime(year: 2024, month: 9, day: 17, hour: 16, minute: 30, second: 0)
+        );
+        eloquence.Courses = _fakeData.Where(c => c.Module.Id == eloquence.Id).ToList();
     }
 
     public static CourseService Instance { get; } = new();
@@ -83,7 +91,7 @@ public class CourseService : AService
         if (course.Room != null) return;
 
         var students = course.Module.StudentGroup.Students.Count;
-        var bigEnoughRooms = RoomService.FromSchoolId(course.Module.School.Id).Where((r) => r.SeatsCount >= students).ToList();
+        var bigEnoughRooms = RoomService.Instance.FromSchoolId(course.Module.School.Id).Where((r) => r.SeatsCount >= students).ToList();
 
         if (bigEnoughRooms.Count == 0) throw new Exception("No room is big enough for this student group");
 
@@ -104,14 +112,21 @@ public class CourseService : AService
     /// <summary>
     /// Create a course with the given parameters
     /// </summary>
-    public Course CreateCourse(Module module, DateTime startTime, DateTime endTime, bool isRemote=false)
+    public Course CreateCourse(
+        Module module,
+        DateTime startTime,
+        DateTime endTime,
+        bool isRemote=false,
+        Room? room = null
+    )
     {
         var course = new Course
         {
             Module = module,
             StartTime = startTime,
             EndTime = endTime,
-            IsRemote = isRemote
+            IsRemote = isRemote,
+            Room = room
         };
         ApplyId(course);
 

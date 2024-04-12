@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Navigation;
 using YnovResurrection.Models;
 using YnovResurrection.Services;
 using YnovResurrection.Views.Pages;
