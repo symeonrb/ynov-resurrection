@@ -18,9 +18,12 @@
                 <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
                     <Hyperlink Click="Buildings_Click" Foreground="#FFFFFDFA">Bâtiments</Hyperlink>
                 </TextBlock>
-                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}"><Hyperlink Click="Courses_Click" Foreground="#FFFFFDFA">Cours</Hyperlink></TextBlock>
-                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}"><Hyperlink Click="Menu3_Click" Foreground="#FFFFFDFA">Menu3</Hyperlink></TextBlock>
-                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}"><Hyperlink Click="Menu4_Click" Foreground="#FFFFFDFA">Menu4</Hyperlink></TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="Rooms_Click" Foreground="#FFFFFDFA">Salles</Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="Courses_Click" Foreground="#FFFFFDFA">Cours</Hyperlink>
+                </TextBlock>
             </StackPanel>
         </DockPanel>
     </Grid>
