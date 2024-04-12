@@ -19,8 +19,8 @@ namespace YnovResurrection.Views.Pages
         {
             if (DataContext is not BuildingPageViewModel viewModel) return;
             BuildingService.Instance.CreateBuilding(
-                address: viewModel.ModelCopy.Address,
-                school: viewModel.ModelCopy.School
+                address: viewModel.Model.Address,
+                school: viewModel.Model.School
             );
             viewModel.Page.ListModels.Items.Refresh();
             NavigationService?.GoBack();
@@ -29,7 +29,7 @@ namespace YnovResurrection.Views.Pages
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (DataContext is not BuildingPageViewModel viewModel) return;
-            BuildingService.Instance.UpdateBuilding(building: viewModel.ModelCopy);
+            BuildingService.Instance.UpdateBuilding(building: viewModel.Model);
             viewModel.Page.ListModels.Items.Refresh();
             NavigationService?.GoBack();
         }

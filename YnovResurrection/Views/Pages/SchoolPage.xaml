@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Nom:" Margin="0,0,10,0" VerticalAlignment="Center" Width="80" />
-                <TextBox Name="name" Text="{Binding ModelCopy.Name}" Grid.Column="1" />
+                <TextBox Name="name" Text="{Binding Model.Name}" Grid.Column="1" />
             </Grid>
 
             <!-- Buttons for actions -->

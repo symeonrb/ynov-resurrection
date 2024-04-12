@@ -18,7 +18,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Module:" Margin="0,0,10,0" VerticalAlignment="Center" Width="80" />
                 <ComboBox ItemsSource="{Binding Modules}"
-                    SelectedItem="{Binding ModelCopy.Module}"
+                    SelectedItem="{Binding Model.Module}"
                     DisplayMemberPath="Name"
                     Grid.Column="1" />
             </Grid>
@@ -30,7 +30,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Heure de début:" Margin="0,0,10,0" VerticalAlignment="Center" Width="120"/>
-                <TextBox Text="{Binding ModelCopy.StartTime, StringFormat='dd/MM/yyyy HH:mm'}" Grid.Column="1"/>
+                <TextBox Text="{Binding Model.StartTime, StringFormat='dd/MM/yyyy HH:mm'}" Grid.Column="1"/>
             </Grid>
 
             <!-- End time input field -->
@@ -40,7 +40,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Heure de fin:" Margin="0,0,10,0" VerticalAlignment="Center" Width="120"/>
-                <TextBox Text="{Binding ModelCopy.EndTime, StringFormat='dd/MM/yyyy HH:mm'}" Grid.Column="1"/>
+                <TextBox Text="{Binding Model.EndTime, StringFormat='dd/MM/yyyy HH:mm'}" Grid.Column="1"/>
             </Grid>
 
             <!-- Is remote input field -->
@@ -50,12 +50,12 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Est à distance:" Margin="0,0,10,0" VerticalAlignment="Center" Width="120"/>
-                <CheckBox IsChecked="{Binding ModelCopy.IsRemote}" Grid.Column="1"/>
+                <CheckBox IsChecked="{Binding Model.IsRemote}" Grid.Column="1"/>
             </Grid>
 
             <!-- Rooms input field (assuming Rooms is a collection of Room objects) -->
             <!-- You can replace this part with your actual logic for selecting rooms -->
-            <ListBox ItemsSource="{Binding ModelCopy.Rooms}" SelectionMode="Multiple" Grid.ColumnSpan="2">
+            <ListBox ItemsSource="{Binding Model.Rooms}" SelectionMode="Multiple" Grid.ColumnSpan="2">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>

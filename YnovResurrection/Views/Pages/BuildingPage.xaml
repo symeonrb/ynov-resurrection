@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Adresse:" Margin="0,0,10,0" VerticalAlignment="Center" Width="80"/>
-                <TextBox Text="{Binding ModelCopy.Address}" Grid.Column="1"/>
+                <TextBox Text="{Binding Model.Address}" Grid.Column="1"/>
             </Grid>
 
             <!-- School input field -->
@@ -28,7 +28,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="École:" Margin="0,0,10,0" VerticalAlignment="Center" Width="80"/>
                 <ComboBox ItemsSource="{Binding Schools}" 
-                      SelectedItem="{Binding ModelCopy.School}" 
+                      SelectedItem="{Binding Model.School}"
                       DisplayMemberPath="Name" 
                       Grid.Column="1"/>
             </Grid>

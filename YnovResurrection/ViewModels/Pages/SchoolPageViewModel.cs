@@ -7,15 +7,13 @@ namespace YnovResurrection.ViewModels.Pages
     public class SchoolPageViewModel
     {
         public required ModelListPage Page { get; set; }
-        public School ModelCopy { get; private set; }
-        public School Model { get; set; }
+        public School Model { get; private set; }
         public bool IsEditMode { get; set; } = false;
         public bool IsAddMode { get; set; } = false;
 
-        public SchoolPageViewModel(School model)
+        public SchoolPageViewModel(School school)
         {
-            Model = model;
-            ModelCopy = IModel.Clone(Model);
+            Model = IModel.Clone(school);
         }
     }
 }

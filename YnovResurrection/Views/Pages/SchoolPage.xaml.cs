@@ -17,7 +17,7 @@ public partial class SchoolPage
     {
         if (DataContext is not SchoolPageViewModel viewModel) return;
         SchoolService.Instance.CreateSchool(
-            name: viewModel.ModelCopy.Name
+            name: viewModel.Model.Name
         );
         viewModel.Page.ListModels.Items.Refresh();
         NavigationService?.GoBack();
@@ -26,7 +26,7 @@ public partial class SchoolPage
     private void SaveButton_Click(object sender, RoutedEventArgs e)
     {
         if (DataContext is not SchoolPageViewModel viewModel) return;
-        SchoolService.Instance.UpdateSchool(school: viewModel.ModelCopy);
+        SchoolService.Instance.UpdateSchool(school: viewModel.Model);
         viewModel.Page.ListModels.Items.Refresh();
         NavigationService?.GoBack();
     }

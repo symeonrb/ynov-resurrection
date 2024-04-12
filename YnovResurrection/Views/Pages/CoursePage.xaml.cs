@@ -21,10 +21,10 @@ namespace YnovResurrection.Views.Pages
         {
             if (DataContext is not CoursePageViewModel viewModel) return;
             CourseService.Instance.CreateCourse(
-                module: viewModel.ModelCopy.Module,
-                startTime: viewModel.ModelCopy.StartTime,
-                endTime: viewModel.ModelCopy.EndTime,
-                isRemote: viewModel.ModelCopy.IsRemote
+                module: viewModel.Model.Module,
+                startTime: viewModel.Model.StartTime,
+                endTime: viewModel.Model.EndTime,
+                isRemote: viewModel.Model.IsRemote
             );
             viewModel.Page.ListModels.Items.Refresh();
             NavigationService?.GoBack();
@@ -33,7 +33,7 @@ namespace YnovResurrection.Views.Pages
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (DataContext is not CoursePageViewModel viewModel) return;
-            CourseService.Instance.UpdateCourse(course: viewModel.ModelCopy);
+            CourseService.Instance.UpdateCourse(course: viewModel.Model);
             viewModel.Page.ListModels.Items.Refresh();
             NavigationService?.GoBack();
         }

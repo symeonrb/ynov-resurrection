@@ -7,15 +7,13 @@ namespace YnovResurrection.ViewModels.Pages
     public class CoursePageViewModel
     {
         public required ModelListPage Page { get; set; }
-        public Course ModelCopy { get; private set; }
-        public Course Model { get; set; }
+        public Course Model { get; private set; }
         public bool IsEditMode { get; set; } = false;
         public bool IsAddMode { get; set; } = false;
 
         public CoursePageViewModel(Course course)
         {
-            Model = course;
-            ModelCopy = IModel.Clone(Model);
+            Model = IModel.Clone(course);
         }
 
         public ICollection<Module> Modules => ModuleService.Instance.List();
