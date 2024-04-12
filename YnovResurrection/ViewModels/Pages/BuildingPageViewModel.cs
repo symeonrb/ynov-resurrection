@@ -1,4 +1,5 @@
 ﻿using YnovResurrection.Models;
+using YnovResurrection.Services;
 using YnovResurrection.Views.Pages;
 
 namespace YnovResurrection.ViewModels.Pages
@@ -15,6 +16,12 @@ namespace YnovResurrection.ViewModels.Pages
         {
             Building = building;
             BuildingCopy = IModel.Clone(Building);
+        }
+
+        public ICollection<School> Schools
+        {
+            get { return SchoolService.Instance.List(); }
+            // set { _BuildingsList = value; }
         }
     }
 }
