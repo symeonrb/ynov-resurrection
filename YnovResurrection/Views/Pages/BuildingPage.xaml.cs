@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using YnovResurrection.Models;
+using YnovResurrection.Services;
 using YnovResurrection.ViewModels.Pages;
 
 namespace YnovResurrection.Views.Pages
@@ -30,29 +31,21 @@ namespace YnovResurrection.Views.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            // Code pour save en BDD
-            // TODO
-
-            // Revenir à la page précédente
-            NavigationService.GoBack();
+            if (DataContext is not BuildingPageViewModel viewModel) return;
+            BuildingService.Instance.CreateBuilding(
+                address: viewModel.BuildingCopy.Address,
+                school: viewModel.BuildingCopy.School
+            );
+            viewModel.Page.ListModels.Items.Refresh();
+            NavigationService?.GoBack();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            // Code pour save en BDD
-            // TODO
-
-            // Convertir le DataContext en instance de votre ViewModel
-            if (DataContext is BuildingPageViewModel viewModel)
-            {
-                // Restaurer les valeurs du Building original
-                viewModel.Building.Address = viewModel.BuildingCopy.Address;
-                viewModel.Building.School = viewModel.BuildingCopy.School;
-                viewModel.Page.ListModels.Items.Refresh();
-            }
-
-            // Revenir à la page précédente
-            NavigationService.GoBack();
+            if (DataContext is not BuildingPageViewModel viewModel) return;
+            BuildingService.Instance.UpdateBuilding(building: viewModel.BuildingCopy);
+            viewModel.Page.ListModels.Items.Refresh();
+            NavigationService?.GoBack();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

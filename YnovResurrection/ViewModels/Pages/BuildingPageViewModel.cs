@@ -6,7 +6,7 @@ namespace YnovResurrection.ViewModels.Pages
 {
     public class BuildingPageViewModel
     {
-        public required BuildingsListPage Page { get; set; }
+        public required DataListPage Page { get; set; }
         public Building BuildingCopy { get; private set; }
         public Building Building { get; set; }
         public bool IsEditMode { get; set; } = false;

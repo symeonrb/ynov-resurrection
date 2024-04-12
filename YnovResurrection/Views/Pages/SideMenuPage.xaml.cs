@@ -26,9 +26,10 @@ namespace YnovResurrection.Views.Pages
 
         private void Buildings_Click(object sender, RoutedEventArgs e)
         {
-            Page page = new BuildingsListPage();
+            DataListPage page = new();
             BuildingsListPageViewModel viewModel = new();
             page.DataContext = viewModel;
+            page.AddColumnsToDataGrid();
             MainWindow.MainPage.Navigate(page);
         }
 
