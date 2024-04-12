@@ -8,6 +8,7 @@ namespace YnovResurrection.ViewModels.Pages
     class CoursesListPageViewModel : IModelListPageViewModel
     {
         public Type ModelType => typeof(Course);
+        public string Title => "Gestion des Cours";
 
         public Page? EditModel(ModelListPage page, IModel? modelNullable)
         {

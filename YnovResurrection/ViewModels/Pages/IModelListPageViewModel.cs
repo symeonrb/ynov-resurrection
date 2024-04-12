@@ -8,6 +8,8 @@ public interface IModelListPageViewModel
 {
     public Type ModelType { get; }
 
+    public string Title { get; }
+
     public Page? EditModel(ModelListPage page, IModel? model);
 
     public void DeleteModel(IModel model);

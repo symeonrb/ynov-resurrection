@@ -9,7 +9,7 @@
 
     <Grid>
         <!-- Titre de la page -->
-        <TextBlock Text="Mon beau tableau"
+        <TextBlock Text="{Binding Title}"
             FontSize="24"
             FontWeight="Bold"
             HorizontalAlignment="Left"
