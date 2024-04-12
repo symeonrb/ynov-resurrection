@@ -2,34 +2,26 @@
 
 namespace YnovResurrection.Models;
 
-public class Room(
-    string id,
-    Building building,
-    string name,
-    ICollection<Equipment> equipments,
-    string? location,
-    string? accessibility
-    )
-    : IModel
+public class Room : IModel
 {
     [Key]
-    public string Id { get; set; } = id;
+    public string Id { get; set; }
 
-    public Building Building { get; set; } = building;
+    public Building Building { get; set; }
 
-    public string Name { get; set; } = name;
+    public string Name { get; set; }
 
-    public ICollection<Equipment> Equipments { get; set; } = equipments;
+    public ICollection<Equipment> Equipments { get; set; }
 
     /// <summary>
     ///  This string is a helper text for new students, so that they can find this room
     /// </summary>
-    public string? Location { get; set; } = location;
+    public string? Location { get; set; }
 
     /// <summary>
     /// This string is used to know if this room is accessible to people with disabilities
     /// </summary>
-    public string? Accessibility { get; set; } = accessibility;
+    public string? Accessibility { get; set; }
 
     public int SeatsCount { get
         {

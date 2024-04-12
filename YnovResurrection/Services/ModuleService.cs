@@ -66,7 +66,7 @@ public class ModuleService : AService
     /// <param name="neededEquipments"></param>
     /// <param name="isRemote"></param>
     /// <param name="allowSharedRoom"></param>
-    public void CreateModule(
+    public Module CreateModule(
         School school,
         string name,
         int totalHours,
@@ -77,20 +77,21 @@ public class ModuleService : AService
         bool allowSharedRoom=false
     )
     {
-        _fakeData.Add(
-            new Module(
-                id: Guid.NewGuid().ToString(),
-                school: school,
-                name: name,
-                totalHours: totalHours,
-                teacher: teacher,
-                studentGroup: studentGroup,
-                courses: [],
-                neededEquipment: neededEquipments,
-                isRemote: isRemote,
-                allowSharedRoom: allowSharedRoom
-            )
-        );
+        var module = new Module
+        {
+            Id = Guid.NewGuid().ToString(),
+            School = school,
+            Name = name,
+            TotalHours = totalHours,
+            Teacher = teacher,
+            StudentGroup = studentGroup,
+            Courses = [],
+            NeededEquipment = neededEquipments,
+            IsRemote = isRemote,
+            AllowSharedRoom = allowSharedRoom,
+        };
+        _fakeData.Add(module);
+        return module;
 
         // TODO :
         // var module = new Module

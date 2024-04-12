@@ -47,8 +47,7 @@ namespace YnovResurrection.Views.Pages
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             BuildingPageViewModel viewModel =
-                new(BuildingService.Instance.CreateBuilding(address: "Entrez ici l'adresse du bâtiment",
-                    school: SchoolService.Instance.List().First()))
+                new(new Building())
                 {
                     Page = this,
                     IsAddMode = true

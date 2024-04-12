@@ -13,17 +13,15 @@ public interface IModel
             throw new ArgumentNullException(nameof(source));
         }
 
-        Type type = typeof(T);
-        T target = Activator.CreateInstance<T>();
-        PropertyInfo[] properties = type.GetProperties();
+        var type = typeof(T);
+        var target = Activator.CreateInstance<T>();
+        var properties = type.GetProperties();
 
-        foreach (PropertyInfo property in properties)
+        foreach (var property in properties)
         {
-            if (property.CanRead && property.CanWrite)
-            {
-                object? value = property.GetValue(source);
-                property.SetValue(target, value);
-            }
+            if (!property.CanRead || !property.CanWrite) continue;
+            var value = property.GetValue(source);
+            property.SetValue(target, value);
         }
 
         return target;

@@ -25,12 +25,13 @@ public class BuildingService : AService
 
     public Building CreateBuilding(string address, School school)
     {
-        var building = new Building(
-            id: Guid.NewGuid().ToString(),
-            address: address,
-            school: school,
-            rooms: []
-        );
+        var building = new Building
+        {
+            Id = Guid.NewGuid().ToString(),
+            Address = address,
+            School = school,
+            Rooms = [],
+        };
         _fakeData.Add(building);
         return building;
 

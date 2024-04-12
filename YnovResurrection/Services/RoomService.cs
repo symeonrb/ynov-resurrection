@@ -40,18 +40,19 @@ public class RoomService : AService
         return Instance._fakeData.Where(r => r.Building.School.Id == schoolId);
     }
 
-    public void CreateRoom(Building building, string name, string? location=null, string? accessibility=null)
+    public Room CreateRoom(Building building, string name, string? location=null, string? accessibility=null)
     {
-        _fakeData.Add(
-            new Room(
-                id: Guid.NewGuid().ToString(),
-                building: building,
-                name: name,
-                equipments: [],
-                location: location,
-                accessibility: accessibility
-            )
-        );
+        var room = new Room
+        {
+            Id = Guid.NewGuid().ToString(),
+            Building = building,
+            Name = name,
+            Equipments = [],
+            Location = location,
+            Accessibility = accessibility
+        };
+        _fakeData.Add(room);
+        return room;
 
         // TODO :
         // var room = new Room

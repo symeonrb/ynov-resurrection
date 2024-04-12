@@ -21,14 +21,16 @@ public class StudentGroupService : AService
     /// </summary>
     /// <param name="name"></param>
     /// <returns></returns>
-    public void CreateStudentGroup(string name)
+    public StudentGroup CreateStudentGroup(string name)
     {
-        _fakeData.Add(new StudentGroup(
-                id: Guid.NewGuid().ToString(),
-                name: name,
-                students: []
-            )
-        );
+        var studentGroup = new StudentGroup
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = name,
+            Students = []
+        };
+        _fakeData.Add(studentGroup);
+        return studentGroup;
 
         // TODO :
         // var group = new StudentGroup

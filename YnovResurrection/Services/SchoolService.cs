@@ -14,17 +14,18 @@ public class SchoolService : AService
 
     private readonly List<School> _fakeData = [];
 
-    public void CreateSchool(string name)
+    public School CreateSchool(string name)
     {
-        _fakeData.Add(
-            new School(
-                id: Guid.NewGuid().ToString(),
-                name: name,
-                admins: [],
-                teachers: [],
-                buildings: []
-            )
-        );
+        var school = new School
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = name,
+            Admins = [],
+            Teachers = [],
+            Buildings = []
+        };
+        _fakeData.Add(school);
+        return school;
 
         // TODO :
         // var school = new School

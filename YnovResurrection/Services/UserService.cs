@@ -74,19 +74,21 @@ public class UserService : AService
     private readonly List<User> _fakeData = [];
 
     //TODO
-    public void CreateUser(string firstName, ICollection<StudentGroup>? studentGroups=null)
+    public User CreateUser(string firstName, ICollection<StudentGroup>? studentGroups=null)
     {
-        _fakeData.Add(
-            new User(
-                id: Guid.NewGuid().ToString(),
-                firstName: firstName,
-                lastName: "",
-                email: null,
-                password: null,
-                isSuperAdmin: false,
-                studentGroups: studentGroups ?? []
-            )
-        );
+
+        var user = new User
+        {
+            Id = Guid.NewGuid().ToString(),
+            FirstName = firstName,
+            LastName = "",
+            Email = null,
+            Password = null,
+            IsSuperAdmin = false,
+            StudentGroups = studentGroups ?? []
+        };
+        _fakeData.Add(user);
+        return user;
 
         // TODO :
         // var user = new User

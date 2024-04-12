@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Globalization;
-using YnovResurrection.Models;
+﻿using YnovResurrection.Models;
 
 namespace YnovResurrection.Services;
 
@@ -103,12 +101,13 @@ public class CourseService : AService
     /// </summary>
     public Course CreateCourse(Module module, DateTime startTime, DateTime endTime)
     {
-        var course = new Course(
-            id: Guid.NewGuid().ToString(),
-            module: module,
-            startTime: startTime,
-            endTime: endTime
-        );
+        var course = new Course
+        {
+            Id = Guid.NewGuid().ToString(),
+            Module = module,
+            StartTime = startTime,
+            EndTime = endTime
+        };
         _fakeData.Add(course);
         return course;
 

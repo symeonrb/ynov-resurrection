@@ -48,15 +48,16 @@ public class EquipmentService : AService
 
     private readonly List<Equipment> _fakeData = [];
 
-    public void CreateEquipment(string type, string? tags=null)
+    public Equipment CreateEquipment(string type, string? tags=null)
     {
-        _fakeData.Add(
-            new Equipment(
-                id: Guid.NewGuid().ToString(),
-                type: type,
-                tags: tags
-            )
-        );
+        var equipment = new Equipment
+        {
+            Id = Guid.NewGuid().ToString(),
+            Type = type,
+            Tags = tags,
+        };
+        _fakeData.Add(equipment);
+        return equipment;
 
         // TODO :
         // var e = new Equipment
