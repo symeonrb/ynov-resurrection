@@ -9,7 +9,7 @@ namespace YnovResurrection.Views.Pages
     /// </summary>
     public partial class SideMenuPage : Page
     {
-        static MainWindow MainWindow { get => (MainWindow)Application.Current.MainWindow; }
+        private static MainWindow MainWindow { get => (MainWindow)Application.Current.MainWindow; }
 
         public SideMenuPage()
         {
@@ -20,8 +20,8 @@ namespace YnovResurrection.Views.Pages
         {
             Page page = new BuildingsListPage();
             BuildingsListPageViewModel viewModel = new();
-            // page.DataContext = viewModel;
-            MainWindow.mainPage.Navigate(page);
+            page.DataContext = viewModel;
+            MainWindow.MainPage.Navigate(page);
         }
 
         private void Courses_Click(object sender, RoutedEventArgs e)
@@ -29,7 +29,7 @@ namespace YnovResurrection.Views.Pages
             Page page = new CoursesListPage();
             CoursesListPageViewModel viewModel = new();
             page.DataContext = viewModel;
-            MainWindow.mainPage.Navigate(page);
+            MainWindow.MainPage.Navigate(page);
         }
 
         private void Menu3_Click(object sender, RoutedEventArgs e)

@@ -29,10 +29,10 @@
             </Grid>
 
             <!-- Frame -->
-            <Frame Name="sideMenuPage" NavigationUIVisibility="Hidden"/>
+            <Frame Name="SideMenuPage" NavigationUIVisibility="Hidden"/>
             
             <!-- Page principale -->
-            <Frame Name="mainPage" NavigationUIVisibility="Hidden"/>
+            <Frame Name="MainPage" NavigationUIVisibility="Hidden"/>
         </DockPanel>
     </Grid>
 </Window>

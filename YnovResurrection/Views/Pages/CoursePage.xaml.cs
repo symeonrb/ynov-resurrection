@@ -39,7 +39,7 @@ namespace YnovResurrection.Views.Pages
                 viewModel.Course.EndTime = viewModel.CourseCopy.EndTime;
                 viewModel.Course.IsRemote = viewModel.CourseCopy.IsRemote;
                 viewModel.Course.Room = viewModel.Course.Room;
-                viewModel.Page.listCourses.Items.Refresh();
+                viewModel.Page.ListModels.Items.Refresh();
             }
 
             // Revenir à la page précédente

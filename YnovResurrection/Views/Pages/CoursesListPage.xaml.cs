@@ -47,12 +47,12 @@ namespace YnovResurrection.Views.Pages
                 {
                     Header = propertyName,
 
-                    // Lier la colonne à la propriété correspondante dans l'objet Course
+                    // Lier la colonne à la propriété correspondante
                     Binding = new Binding(propertyName)
                 };
 
                 // Ajouter la colonne à la DataGrid
-                listCourses.Columns.Add(column);
+                ListModels.Columns.Add(column);
             }
         }
 
@@ -85,12 +85,12 @@ namespace YnovResurrection.Views.Pages
 
             // Obtenez la source de données du DataGrid et
             // Supprimez l'élément de votre liste de données
-            if (listCourses.ItemsSource is List<Course> itemsSource)
+            if (ListModels.ItemsSource is List<Course> itemsSource)
             {
                 itemsSource.Remove(course!);
 
                 // Rafraîchissez l'affichage du DataGrid
-                listCourses.Items.Refresh();
+                ListModels.Items.Refresh();
             }
         }
 

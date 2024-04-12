@@ -11,12 +11,12 @@ namespace YnovResurrection.Views
         public MainWindow()
         {
             InitializeComponent();
-            sideMenuPage.Navigate(new SideMenuPage());
+            SideMenuPage.Navigate(new SideMenuPage());
         }
 
         private void Accueil_Click(object sender, RoutedEventArgs e)
         {
-            sideMenuPage.Navigate(new SideMenuPage());
+            SideMenuPage.Navigate(new SideMenuPage());
         }
     }
 }

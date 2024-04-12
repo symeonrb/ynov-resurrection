@@ -48,7 +48,6 @@ public class BuildingService : AService
 
     public ICollection<Building> List()
     {
-        Console.Write("BWAAAAAA");
         return _fakeData; // TODO : _appDb.Buildings.ToList();
     }
     

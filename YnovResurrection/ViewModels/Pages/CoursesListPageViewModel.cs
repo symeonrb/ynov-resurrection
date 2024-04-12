@@ -9,7 +9,7 @@ namespace YnovResurrection.ViewModels.Pages
         // {
         // }
 
-        public ICollection<Course> Courses
+        public ICollection<Course> List
         {
             get {  return CourseService.Instance.List(); }
             // set { _CoursesList = value; }

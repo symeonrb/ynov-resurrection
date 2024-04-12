@@ -48,7 +48,7 @@ namespace YnovResurrection.Views.Pages
                 // Restaurer les valeurs du Building original
                 viewModel.Building.Address = viewModel.BuildingCopy.Address;
                 viewModel.Building.School = viewModel.BuildingCopy.School;
-                viewModel.Page.listBuildings.Items.Refresh();
+                viewModel.Page.ListModels.Items.Refresh();
             }
 
             // Revenir à la page précédente

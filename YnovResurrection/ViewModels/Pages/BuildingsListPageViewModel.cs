@@ -10,7 +10,7 @@ namespace YnovResurrection.ViewModels.Pages
         // {
         // }
 
-        public ICollection<Building> Buildings
+        public ICollection<Building> List
         {
             get {  return BuildingService.Instance.List(); }
             // set { _BuildingsList = value; }

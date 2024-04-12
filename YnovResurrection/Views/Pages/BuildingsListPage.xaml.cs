@@ -31,14 +31,16 @@ namespace YnovResurrection.Views.Pages
             foreach (string propertyName in propertyNames)
             {
                 // Créer une nouvelle colonne avec le nom de la propriété comme en-tête
-                DataGridTextColumn column = new DataGridTextColumn();
-                column.Header = propertyName;
+                DataGridTextColumn column = new()
+                {
+                    Header = propertyName,
 
-                // Lier la colonne à la propriété correspondante dans l'objet Building
-                column.Binding = new Binding(propertyName);
+                    // Lier la colonne à la propriété correspondante
+                    Binding = new Binding(propertyName)
+                };
 
                 // Ajouter la colonne à la DataGrid
-                listBuildings.Columns.Add(column);
+                ListModels.Columns.Add(column);
             }
         }
 
@@ -67,12 +69,12 @@ namespace YnovResurrection.Views.Pages
 
             // Obtenez la source de données du DataGrid et
             // Supprimez l'élément de votre liste de données
-            if (listBuildings.ItemsSource is List<Building> itemsSource)
+            if (ListModels.ItemsSource is List<Building> itemsSource)
             {
                 itemsSource.Remove(building!);
 
                 // Rafraîchissez l'affichage du DataGrid
-                listBuildings.Items.Refresh();
+                ListModels.Items.Refresh();
             }
         }
 

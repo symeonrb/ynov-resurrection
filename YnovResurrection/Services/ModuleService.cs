@@ -32,14 +32,14 @@ public class ModuleService : AService
             school: musicHouse,
             name: "GuitareB1",
             totalHours: 3,
-            teacher: users.First((u) => u.FirstName == "TeacherGuitare"),
+            teacher: users.First((u) => u.FirstName == "TeacherGuitar"),
             studentGroup: bachelor1
         );
         CreateModule(
             school: musicHouse,
             name: "GuitareB2",
             totalHours: 3,
-            teacher: users.First((u) => u.FirstName == "TeacherGuitare"),
+            teacher: users.First((u) => u.FirstName == "TeacherGuitar"),
             studentGroup: bachelor2
         );
         CreateModule(

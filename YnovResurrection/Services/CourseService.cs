@@ -123,7 +123,6 @@ public class CourseService : AService
 
     public ICollection<Course> List()
     {
-        Console.Write("YOOOOO");
         return _fakeData; // TODO : _appDb.Courses.ToList();
     }
 
