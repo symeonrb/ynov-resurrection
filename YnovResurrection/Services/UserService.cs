@@ -79,7 +79,6 @@ public class UserService : AService
 
         var user = new User
         {
-            Id = Guid.NewGuid().ToString(),
             FirstName = firstName,
             LastName = "",
             Email = null,

@@ -25,7 +25,6 @@ public class StudentGroupService : AService
     {
         var studentGroup = new StudentGroup
         {
-            Id = Guid.NewGuid().ToString(),
             Name = name,
             Students = []
         };

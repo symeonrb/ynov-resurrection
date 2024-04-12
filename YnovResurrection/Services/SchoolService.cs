@@ -18,7 +18,6 @@ public class SchoolService : AService
     {
         var school = new School
         {
-            Id = Guid.NewGuid().ToString(),
             Name = name,
             Admins = [],
             Teachers = [],

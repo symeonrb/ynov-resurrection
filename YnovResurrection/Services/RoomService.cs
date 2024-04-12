@@ -44,7 +44,6 @@ public class RoomService : AService
     {
         var room = new Room
         {
-            Id = Guid.NewGuid().ToString(),
             Building = building,
             Name = name,
             Equipments = [],
