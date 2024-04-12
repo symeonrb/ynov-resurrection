@@ -4,25 +4,77 @@ namespace YnovResurrection.Services;
 
 public class EquipmentService : AService
 {
-
-    public Equipment CreateEquipment(string type, string tags)
+    private EquipmentService()
     {
-        var e = new Equipment
-        {
-            Type = type,
-            Tags = tags
-        };
-        
-        ApplyId(ref e);
-        _appDb.Equipments.Add(e);
-        Flush();
+        var rooms = RoomService.Instance.List();
 
-        return e;
+        CreateEquipment(type: Equipment.ChairType);
+        CreateEquipment(type: Equipment.Table1PersonType);
+        CreateEquipment(type: Equipment.Table2PeopleType);
+
+        var chair = _fakeData.Single(e => e.Type == Equipment.ChairType);
+        var table1Person = _fakeData.Single(e => e.Type == Equipment.Table1PersonType);
+        var table2People = _fakeData.Single(e => e.Type == Equipment.Table2PeopleType);
+
+        rooms.ElementAt(0).Equipments = [
+            chair, chair,
+            table2People,
+        ];
+        rooms.ElementAt(1).Equipments = [
+            chair, chair, chair, chair, chair, chair,
+            table2People, table2People, table2People,
+        ];
+        rooms.ElementAt(2).Equipments = [
+            chair, chair, chair, chair, chair, chair, chair, chair,
+            table1Person, table1Person, table1Person, table1Person,
+        ];
+
+        rooms.ElementAt(3).Equipments = [
+            chair, chair,
+            table2People,
+        ];
+        rooms.ElementAt(4).Equipments = [
+            chair, chair,
+            table2People,
+        ];
+
+        rooms.ElementAt(5).Equipments = [
+            chair, chair, chair, chair, chair, chair, chair, chair, chair, chair, chair, chair, chair, chair,
+            table2People, table2People, table2People, table2People, table2People, table2People, table2People,
+        ];
+    }
+
+    public static EquipmentService Instance { get; } = new();
+
+    private readonly List<Equipment> _fakeData = [];
+
+    public void CreateEquipment(string type, string? tags=null)
+    {
+        _fakeData.Add(
+            new Equipment(
+                id: Guid.NewGuid().ToString(),
+                type: type,
+                tags: tags
+            )
+        );
+
+        // TODO :
+        // var e = new Equipment
+        // {
+        //     Type = type,
+        //     Tags = tags
+        // };
+        //
+        // ApplyId(ref e);
+        // _appDb.Equipments.Add(e);
+        // Flush();
+        //
+        // return e;
     }
 
     public ICollection<Equipment> List()
     {
-        return _appDb.Equipments.ToList();
+        return _fakeData; // TODO : _appDb.Equipments.ToList();
     }
 
 }

@@ -2,21 +2,21 @@
 
 namespace YnovResurrection.Models;
 
-public class Course : IModel
+public class Course(string id, Module module, DateTime startTime, DateTime endTime, Room? room=null, bool isRemote=false)
+    : IModel
 {
+    public string Id { get; set; } = id;
 
-    [Key]
-    public string Id { get; set; }
-    
+    public Module Module { get; set; } = module;
+
     [Required]
-    public DateTime StartTime { get; set; }
-    
+    public DateTime StartTime { get; set; } = startTime;
+
     [Required]
-    public DateTime EndTime { get; set; }
-    
+    public DateTime EndTime { get; set; } = endTime;
+
     [Required]
-    public bool IsRemote { get; set; }
-    
-    public ICollection<Room> Rooms { get; set; }
-    
+    public Room? Room { get; set; } = room;
+
+    public bool IsRemote { get; set; } = isRemote;
 }

@@ -1,23 +1,18 @@
 ﻿using YnovResurrection.Models;
+using YnovResurrection.Services;
 
 namespace YnovResurrection.ViewModels.Pages
 {
     class CoursesListPageViewModel
     {
-        private IList<Course> _CoursesList;
+        // public CoursesListPageViewModel()
+        // {
+        // }
 
-        public CoursesListPageViewModel() 
-        { 
-            _CoursesList =
-            [
-                // Ajouter quelques bâtiments de test
-            ];
-        }
-
-        public IList<Course> Courses
+        public ICollection<Course> Courses
         {
-            get {  return _CoursesList; }
-            set { _CoursesList = value; }
+            get {  return CourseService.Instance.List(); }
+            // set { _CoursesList = value; }
         }
     }
 }

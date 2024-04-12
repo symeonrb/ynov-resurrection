@@ -34,10 +34,11 @@ namespace YnovResurrection.Views.Pages
             if (DataContext is CoursePageViewModel viewModel)
             {
                 // Restaurer les valeurs du Course original
+                viewModel.Course.Module = viewModel.CourseCopy.Module;
                 viewModel.Course.StartTime = viewModel.CourseCopy.StartTime;
                 viewModel.Course.EndTime = viewModel.CourseCopy.EndTime;
                 viewModel.Course.IsRemote = viewModel.CourseCopy.IsRemote;
-                viewModel.Course.Rooms = viewModel.Course.Rooms;
+                viewModel.Course.Room = viewModel.Course.Room;
                 viewModel.Page.listCourses.Items.Refresh();
             }
 

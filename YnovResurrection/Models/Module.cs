@@ -1,21 +1,35 @@
 ﻿namespace YnovResurrection.Models;
 
-public class Module : IModel
+public class Module(
+    string id,
+    School school,
+    string name,
+    int totalHours,
+    User teacher,
+    StudentGroup studentGroup,
+    ICollection<Course> courses,
+    string? neededEquipment=null,
+    bool isRemote=false,
+    bool allowSharedRoom=false)
+    : IModel
 {
-    public string Id { get; set; }
+    public string Id { get; set; } = id;
 
-    public bool IsRemote { get; set; }
+    public School School { get; set; } = school;
 
-    public string Name { get; set; }
+    public string Name { get; set; } = name;
 
-    public User Teacher { get; set; }
+    public int TotalHours { get; set; } = totalHours;
 
-    public StudentGroup StudentGroup { get; set; }
+    public User Teacher { get; set; } = teacher;
 
-    public string NeededEquipment { get; set; }
+    public StudentGroup StudentGroup { get; set; } = studentGroup;
 
-    public bool AllowSharedRoom { get; set; }
-    
-    public int Hours { get; set; }
-    
+    public ICollection<Course> Courses { get; set; } = courses;
+
+    public string? NeededEquipment { get; set; } = neededEquipment;
+
+    public bool IsRemote { get; set; } = isRemote;
+
+    public bool AllowSharedRoom { get; set; } = allowSharedRoom;
 }

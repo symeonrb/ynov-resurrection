@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
 using YnovResurrection.Models;
+using YnovResurrection.Services;
 using YnovResurrection.ViewModels.Pages;
 
 namespace YnovResurrection.Views.Pages
@@ -57,7 +58,13 @@ namespace YnovResurrection.Views.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            CoursePageViewModel viewModel = new(new Course())
+            CoursePageViewModel viewModel = new(
+                CourseService.Instance.CreateCourse(
+                    module: ModuleService.Instance.List().First(),
+                    startTime: new DateTime(),
+                    endTime: new DateTime()
+                )
+            )
             {
                 Page = this,
                 IsAddMode = true

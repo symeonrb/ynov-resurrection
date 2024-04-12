@@ -2,23 +2,33 @@
 
 namespace YnovResurrection.Models;
 
-public class User : IModel
+public class User(
+    string id,
+    string firstName,
+    string lastName,
+    string? email,
+    string? password,
+    bool isSuperAdmin,
+    ICollection<StudentGroup> studentGroups)
+    : IModel
 {
-
     [Key]
-    public string Id { get; set; }
-    
+    public string Id { get; set; } = id;
+
     [Required]
-    public string Username { get; set; }
-    
+    public string FirstName { get; set; } = firstName;
+
     [Required]
-    public bool IsSuperAdmin { get; set; }
-    
+    public string LastName { get; set; } = lastName;
+
     [EmailAddress]
-    public string Email { get; set; }
+    public string? Email { get; set; } = email;
 
-    public string Password { get; set; }
+    public string? Password { get; set; } = password;
 
-    public ICollection<Module> Modules { get; set; }
+    // This is a temporary authorization implementation.
+    // What is needed is a table Authorizations with a User, a Building and a Role.
+    public bool IsSuperAdmin { get; set; } = isSuperAdmin;
 
+    public ICollection<StudentGroup> StudentGroups { get; set; } = studentGroups;
 }
