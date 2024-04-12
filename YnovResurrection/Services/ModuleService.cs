@@ -8,6 +8,7 @@ public class ModuleService : AService
     {
         var schools = SchoolService.Instance.List();
         var musicHouse = schools.ElementAt(0);
+        var nobodyNovy = schools.ElementAt(1);
         var studentGroups = StudentGroupService.Instance.List();
         var bachelor1 = studentGroups.ElementAt(0);
         var bachelor2 = studentGroups.ElementAt(1);
@@ -45,6 +46,13 @@ public class ModuleService : AService
         CreateModule(
             school: musicHouse,
             name: "Français",
+            totalHours: 3,
+            teacher: users.First((u) => u.FirstName == "TeacherFrench"),
+            studentGroup: studyingFrench
+        );
+        CreateModule(
+            school: nobodyNovy,
+            name: "Concours d'éloquence",
             totalHours: 3,
             teacher: users.First((u) => u.FirstName == "TeacherFrench"),
             studentGroup: studyingFrench
@@ -89,7 +97,7 @@ public class ModuleService : AService
             IsRemote = isRemote,
             AllowSharedRoom = allowSharedRoom,
         };
-        ApplyId(ref module);
+        ApplyId(module);
 
         _fakeData.Add(module);
         // TODO : replace by this
@@ -97,6 +105,11 @@ public class ModuleService : AService
         // Flush();
 
         return module;
+    }
+
+    public IEnumerable<Module> FromSchoolId(string schoolId)
+    {
+        return Instance._fakeData.Where(r => r.School.Id == schoolId);
     }
 
     public ICollection<Module> List()

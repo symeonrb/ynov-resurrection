@@ -14,7 +14,7 @@ public abstract class AService
     /// </summary>
     /// <param name="model"></param>
     /// <typeparam name="T"></typeparam>
-    protected static void ApplyId<T>(ref T model) where T : IModel
+    protected static void ApplyId(IModel model)
     {
         model.Id = Guid.NewGuid().ToString();
     }

@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-using System.Runtime.Intrinsics;
-using YnovResurrection.Models;
+﻿using YnovResurrection.Models;
 
 namespace YnovResurrection.Services;
 
@@ -30,12 +28,12 @@ public class RoomService : AService
 
     private readonly List<Room> _fakeData = [];
 
-    public static Room? FromId(string roomId)
+    public Room? FromId(string roomId)
     {
         return Instance._fakeData.SingleOrDefault(r => r.Id == roomId);
     }
 
-    public static IEnumerable<Room> FromSchoolId(string schoolId)
+    public IEnumerable<Room> FromSchoolId(string schoolId)
     {
         return Instance._fakeData.Where(r => r.Building.School.Id == schoolId);
     }
@@ -44,14 +42,13 @@ public class RoomService : AService
     {
         var room = new Room
         {
-            Id = Guid.NewGuid().ToString(),
             Building = building,
             Name = name,
             Equipments = [],
             Location = location,
             Accessibility = accessibility
         };
-        ApplyId(ref room);
+        ApplyId(room);
 
         _fakeData.Add(room);
         // TODO : replace by this

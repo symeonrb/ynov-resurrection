@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using YnovResurrection.Models;
+﻿using YnovResurrection.Models;
 
 namespace YnovResurrection.Services;
 
@@ -25,11 +24,10 @@ public class StudentGroupService : AService
     {
         var studentGroup = new StudentGroup
         {
-            Id = Guid.NewGuid().ToString(),
             Name = name,
             Students = []
         };
-        ApplyId(ref studentGroup);
+        ApplyId(studentGroup);
 
         _fakeData.Add(studentGroup);
         // TODO : replace by this

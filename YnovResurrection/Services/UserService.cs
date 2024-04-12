@@ -79,7 +79,6 @@ public class UserService : AService
 
         var user = new User
         {
-            Id = Guid.NewGuid().ToString(),
             FirstName = firstName,
             LastName = "",
             Email = null,
@@ -87,7 +86,7 @@ public class UserService : AService
             IsSuperAdmin = false,
             StudentGroups = studentGroups ?? []
         };
-        ApplyId(ref user);
+        ApplyId(user);
 
         _fakeData.Add(user);
         // TODO : replace by this

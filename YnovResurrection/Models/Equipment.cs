@@ -16,4 +16,6 @@ public class Equipment : IModel
     public const string ChairType = "chair";
     public const string Table1PersonType = "table1person";
     public const string Table2PeopleType = "table2people";
+
+    public override String ToString() => Type;
 }

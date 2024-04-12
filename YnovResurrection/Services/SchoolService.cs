@@ -18,13 +18,12 @@ public class SchoolService : AService
     {
         var school = new School
         {
-            Id = Guid.NewGuid().ToString(),
             Name = name,
             Admins = [],
             Teachers = [],
             Buildings = []
         };
-        ApplyId(ref school);
+        ApplyId(school);
 
         _fakeData.Add(school);
         // TODO : replace by this
@@ -34,9 +33,18 @@ public class SchoolService : AService
         return school;
     }
 
+    public void DeleteSchool(School school) => _fakeData.Remove(school);
+
     public ICollection<School> List()
     {
         return _fakeData; // TODO : _appDb.Schools.ToList();
+    }
+
+    public void UpdateSchool(School school)
+    {
+        var index = _fakeData.FindIndex(b => b.Id == school.Id);
+        if (index == -1) return;
+        _fakeData[index] = school;
     }
     
 }

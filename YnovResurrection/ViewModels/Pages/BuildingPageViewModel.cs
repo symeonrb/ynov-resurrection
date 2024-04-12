@@ -1,20 +1,21 @@
 ﻿using YnovResurrection.Models;
+using YnovResurrection.Services;
 using YnovResurrection.Views.Pages;
 
 namespace YnovResurrection.ViewModels.Pages
 {
     public class BuildingPageViewModel
     {
-        public required BuildingsListPage Page { get; set; }
-        public Building BuildingCopy { get; private set; }
-        public Building Building { get; set; }
+        public required ModelListPage Page { get; set; }
+        public Building Model { get; private set; }
         public bool IsEditMode { get; set; } = false;
         public bool IsAddMode { get; set; } = false;
 
         public BuildingPageViewModel(Building building)
         {
-            Building = building;
-            BuildingCopy = IModel.Clone(Building);
+            Model = IModel.Clone(building);
         }
+
+        public ICollection<School> Schools => SchoolService.Instance.List();
     }
 }

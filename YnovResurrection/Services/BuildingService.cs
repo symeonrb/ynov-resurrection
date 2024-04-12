@@ -31,7 +31,7 @@ public class BuildingService : AService
             School = school,
             Rooms = [],
         };
-        ApplyId(ref building);
+        ApplyId(building);
 
         _fakeData.Add(building);
         // TODO : replace by this
@@ -41,9 +41,17 @@ public class BuildingService : AService
         return building;
     }
 
+    public void DeleteBuilding(Building building) => _fakeData.Remove(building);
+
     public ICollection<Building> List()
     {
         return _fakeData; // TODO : _appDb.Buildings.ToList();
     }
-    
+
+    public void UpdateBuilding(Building building)
+    {
+        var index = _fakeData.FindIndex(b => b.Id == building.Id);
+        if (index == -1) return;
+        _fakeData[index] = building;
+    }
 }
