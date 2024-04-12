@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using YnovResurrection.Models;
 using YnovResurrection.ViewModels.Pages;
 
 namespace YnovResurrection.Views.Pages
@@ -20,9 +8,9 @@ namespace YnovResurrection.Views.Pages
     /// <summary>
     /// Logique d'interaction pour BuildingPage.xaml
     /// </summary>
-    public partial class BuildingPage : Page
+    public partial class CoursePage : Page
     {
-        public BuildingPage(BuildingPageViewModel viewModel)
+        public CoursePage(CoursePageViewModel viewModel)
         {
             InitializeComponent();
             DataContext = viewModel;
@@ -43,12 +31,14 @@ namespace YnovResurrection.Views.Pages
             // TODO
 
             // Convertir le DataContext en instance de votre ViewModel
-            if (DataContext is BuildingPageViewModel viewModel)
+            if (DataContext is CoursePageViewModel viewModel)
             {
-                // Restaurer les valeurs du Building original
-                viewModel.Building.Address = viewModel.BuildingCopy.Address;
-                viewModel.Building.School = viewModel.BuildingCopy.School;
-                viewModel.Page.listBuildings.Items.Refresh();
+                // Restaurer les valeurs du Course original
+                viewModel.Course.StartTime = viewModel.CourseCopy.StartTime;
+                viewModel.Course.EndTime = viewModel.CourseCopy.EndTime;
+                viewModel.Course.IsRemote = viewModel.CourseCopy.IsRemote;
+                viewModel.Course.Rooms = viewModel.Course.Rooms;
+                viewModel.Page.listCourses.Items.Refresh();
             }
 
             // Revenir à la page précédente

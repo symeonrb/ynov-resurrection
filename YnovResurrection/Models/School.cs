@@ -16,4 +16,9 @@ public class School : IModel
 
     public ICollection<Room> Rooms { get; set; }
 
+    public override string ToString()
+    {
+        return Name;
+    }
+
 }

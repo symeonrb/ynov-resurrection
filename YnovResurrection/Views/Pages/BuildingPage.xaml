@@ -9,6 +9,39 @@
       Title="BuildingPage">
 
     <Grid>
-        
+        <!-- Form for building details -->
+        <StackPanel Margin="20">
+            <!-- Address input field -->
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Adresse:" Margin="0,0,10,0" VerticalAlignment="Center" Width="80"/>
+                <TextBox Name="address" Text="{Binding BuildingCopy.Address}" Grid.Column="1"/>
+            </Grid>
+
+            <!-- School input field -->
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="École:" Margin="0,0,10,0" VerticalAlignment="Center" Width="80"/>
+                <ComboBox ItemsSource="{Binding Schools}" 
+                      SelectedItem="{Binding BuildingCopy.School}" 
+                      DisplayMemberPath="Name" 
+                      Grid.Column="1"/>
+            </Grid>
+
+            <!-- Buttons for actions -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Button Content="Ajouter" Click="AddButton_Click" Visibility="{Binding IsAddMode, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Button Content="Enregistrer" Click="SaveButton_Click" Visibility="{Binding IsEditMode, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <Button Content="Annuler" Click="CancelButton_Click" Margin="10,0,0,0" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
+
+
 </Page>
