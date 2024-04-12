@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
 using YnovResurrection.Services;
 using YnovResurrection.ViewModels.Pages;
 
@@ -9,7 +7,7 @@ namespace YnovResurrection.Views.Pages
     /// <summary>
     /// Logique d'interaction pour CoursePage.xaml
     /// </summary>
-    public partial class CoursePage : Page
+    public partial class CoursePage
     {
         public CoursePage(CoursePageViewModel viewModel)
         {
@@ -24,7 +22,8 @@ namespace YnovResurrection.Views.Pages
                 module: viewModel.Model.Module,
                 startTime: viewModel.Model.StartTime,
                 endTime: viewModel.Model.EndTime,
-                isRemote: viewModel.Model.IsRemote
+                isRemote: viewModel.Model.IsRemote,
+                room: viewModel.Model.Room
             );
             viewModel.Page.ListModels.Items.Refresh();
             NavigationService?.GoBack();

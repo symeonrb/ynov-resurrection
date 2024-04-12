@@ -16,7 +16,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Module:" Margin="0,0,10,0" VerticalAlignment="Center" Width="80" />
+                <TextBlock Text="Module:" Margin="0,0,10,0" VerticalAlignment="Center" Width="120" />
                 <ComboBox ItemsSource="{Binding Modules}"
                     SelectedItem="{Binding Model.Module}"
                     DisplayMemberPath="Name"
@@ -53,15 +53,18 @@
                 <CheckBox IsChecked="{Binding Model.IsRemote}" Grid.Column="1"/>
             </Grid>
 
-            <!-- Rooms input field (assuming Rooms is a collection of Room objects) -->
-            <!-- You can replace this part with your actual logic for selecting rooms -->
-            <ListBox ItemsSource="{Binding Model.Rooms}" SelectionMode="Multiple" Grid.ColumnSpan="2">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <!-- Room input field -->
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Salle:" Margin="0,0,10,0" VerticalAlignment="Center" Width="120" />
+                <ComboBox ItemsSource="{Binding Rooms}"
+                    SelectedItem="{Binding Model.Room}"
+                    DisplayMemberPath="Name"
+                    Grid.Column="1" />
+            </Grid>
 
             <!-- Buttons for actions -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >

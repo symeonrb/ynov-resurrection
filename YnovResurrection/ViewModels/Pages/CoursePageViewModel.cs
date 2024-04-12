@@ -16,6 +16,10 @@ namespace YnovResurrection.ViewModels.Pages
             Model = IModel.Clone(course);
         }
 
-        public IEnumerable<Module> Modules => ModuleService.Instance.FromSchoolId(Model.Module.School.Id);
+        public IEnumerable<Module> Modules => IsAddMode
+            ? ModuleService.Instance.List()
+            : ModuleService.Instance.FromSchoolId(Model.Module.School.Id);
+
+        public IEnumerable<Room> Rooms => RoomService.Instance.FromSchoolId(Model.Module.School.Id);
     }
 }
