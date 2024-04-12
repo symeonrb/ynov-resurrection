@@ -110,7 +110,8 @@ public class CourseService : AService
         {
             Module = module,
             StartTime = startTime,
-            EndTime = endTime
+            EndTime = endTime,
+            IsRemote = isRemote
         };
         ApplyId(course);
 
