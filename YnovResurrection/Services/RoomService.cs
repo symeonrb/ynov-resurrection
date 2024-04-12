@@ -19,7 +19,7 @@ public class RoomService : AService
             Accessibility = accessibility,
             Location = location,
             Name = name,
-            
+
             Building = building
         };
 

@@ -4,7 +4,7 @@ namespace YnovResurrection.Models;
 
 public class Equipment : IModel
 {
-    
+
     [Key]
     public string Id { get; set; }
     
@@ -13,5 +13,5 @@ public class Equipment : IModel
     
     [Required]
     public string Tags { get; set; }
-    
+
 }
