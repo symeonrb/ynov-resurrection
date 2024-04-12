@@ -6,9 +6,9 @@ using YnovResurrection.ViewModels.Pages;
 
 namespace YnovResurrection.Views.Pages;
 
-public partial class DataListPage : Page // where T : class, IModel, new()
+public partial class ModelListPage : Page // where T : class, IModel, new()
 {
-    public DataListPage(IDataListPageViewModel viewModel)
+    public ModelListPage(IModelListPageViewModel viewModel)
     {
         InitializeComponent();
         DataContext = viewModel;
@@ -17,7 +17,7 @@ public partial class DataListPage : Page // where T : class, IModel, new()
 
     public void AddColumnsToDataGrid()
     {
-        if (DataContext is not IDataListPageViewModel viewModel) return;
+        if (DataContext is not IModelListPageViewModel viewModel) return;
 
         // Créer une liste de noms de propriétés à afficher dans les colonnes
         List<string> propertyNames = viewModel.ModelType.GetProperties()
@@ -44,7 +44,7 @@ public partial class DataListPage : Page // where T : class, IModel, new()
 
     private void AddButton_Click(object sender, RoutedEventArgs e)
     {
-        if (DataContext is not IDataListPageViewModel viewModel) return;
+        if (DataContext is not IModelListPageViewModel viewModel) return;
         var editPage = viewModel.EditModel(this, null);
         if (editPage == null) return;
         NavigationService?.Navigate(editPage);
@@ -52,7 +52,7 @@ public partial class DataListPage : Page // where T : class, IModel, new()
 
     private void DeleteButton_Click(object sender, RoutedEventArgs e)
     {
-        if (DataContext is not IDataListPageViewModel viewModel) return;
+        if (DataContext is not IModelListPageViewModel viewModel) return;
         if ((sender as Button)?.DataContext is not IModel model) return;
         viewModel.DeleteModel(model);
         ListModels.Items.Refresh();
@@ -60,7 +60,7 @@ public partial class DataListPage : Page // where T : class, IModel, new()
 
     private void EditButton_Click(object sender, RoutedEventArgs e)
     {
-        if (DataContext is not IDataListPageViewModel viewModel) return;
+        if (DataContext is not IModelListPageViewModel viewModel) return;
         if ((sender as Button)?.DataContext is not IModel model) return;
         var editPage = viewModel.EditModel(this, model);
         if (editPage == null) return;

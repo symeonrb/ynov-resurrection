@@ -10,6 +10,19 @@
     <Grid>
         <!-- Form for course details -->
         <StackPanel Margin="20">
+            <!-- Module input field -->
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Module:" Margin="0,0,10,0" VerticalAlignment="Center" Width="80" />
+                <ComboBox ItemsSource="{Binding Modules}"
+                    SelectedItem="{Binding ModelCopy.Module}"
+                    DisplayMemberPath="Name"
+                    Grid.Column="1" />
+            </Grid>
+
             <!-- Start time input field -->
             <Grid Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>

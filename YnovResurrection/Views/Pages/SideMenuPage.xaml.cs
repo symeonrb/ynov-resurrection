@@ -18,21 +18,19 @@ namespace YnovResurrection.Views.Pages
 
         private void Schools_Click(object sender, RoutedEventArgs e)
         {
-            DataListPage page = new(new SchoolsListPageViewModel());
+            ModelListPage page = new(new SchoolsListPageViewModel());
             MainWindow.MainPage.Navigate(page);
         }
 
         private void Buildings_Click(object sender, RoutedEventArgs e)
         {
-            DataListPage page = new(new BuildingsListPageViewModel());
+            ModelListPage page = new(new BuildingsListPageViewModel());
             MainWindow.MainPage.Navigate(page);
         }
 
         private void Courses_Click(object sender, RoutedEventArgs e)
         {
-            Page page = new CoursesListPage();
-            CoursesListPageViewModel viewModel = new();
-            page.DataContext = viewModel;
+            ModelListPage page = new(new CoursesListPageViewModel());
             MainWindow.MainPage.Navigate(page);
         }
 

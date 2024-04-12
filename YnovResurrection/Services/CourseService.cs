@@ -96,10 +96,15 @@ public class CourseService : AService
         course.Room = availibleRooms.First();
     }
 
+    private static bool CoursesOverlap(Course c1, Course c2)
+    {
+        return c1.StartTime < c2.EndTime && c2.StartTime < c1.EndTime;
+    }
+
     /// <summary>
     /// Create a course with the given parameters
     /// </summary>
-    public Course CreateCourse(Module module, DateTime startTime, DateTime endTime)
+    public Course CreateCourse(Module module, DateTime startTime, DateTime endTime, bool isRemote=false)
     {
         var course = new Course
         {
@@ -117,13 +122,17 @@ public class CourseService : AService
         return course;
     }
 
+    public void DeleteCourse(Course course) => _fakeData.Remove(course);
+
     public ICollection<Course> List()
     {
         return _fakeData; // TODO : _appDb.Courses.ToList();
     }
 
-    private bool CoursesOverlap(Course c1, Course c2)
+    public void UpdateCourse(Course course)
     {
-        return c1.StartTime < c2.EndTime && c2.StartTime < c1.EndTime;
+        var index = _fakeData.FindIndex(b => b.Id == course.Id);
+        if (index == -1) return;
+        _fakeData[index] = course;
     }
 }

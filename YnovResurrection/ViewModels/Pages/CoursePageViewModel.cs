@@ -1,11 +1,12 @@
 ﻿using YnovResurrection.Models;
+using YnovResurrection.Services;
 using YnovResurrection.Views.Pages;
 
 namespace YnovResurrection.ViewModels.Pages
 {
     public class CoursePageViewModel
     {
-        public required CoursesListPage Page { get; set; }
+        public required ModelListPage Page { get; set; }
         public Course ModelCopy { get; private set; }
         public Course Model { get; set; }
         public bool IsEditMode { get; set; } = false;
@@ -16,5 +17,7 @@ namespace YnovResurrection.ViewModels.Pages
             Model = course;
             ModelCopy = IModel.Clone(Model);
         }
+
+        public ICollection<Module> Modules => ModuleService.Instance.List();
     }
 }

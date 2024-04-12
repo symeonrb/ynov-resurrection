@@ -4,11 +4,11 @@ using YnovResurrection.Views.Pages;
 
 namespace YnovResurrection.ViewModels.Pages;
 
-public interface IDataListPageViewModel
+public interface IModelListPageViewModel
 {
     public Type ModelType { get; }
 
-    public Page? EditModel(DataListPage page, IModel? model);
+    public Page? EditModel(ModelListPage page, IModel? model);
 
     public void DeleteModel(IModel model);
 }

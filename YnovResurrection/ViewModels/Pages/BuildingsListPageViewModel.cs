@@ -6,11 +6,11 @@ using YnovResurrection.Views.Pages;
 
 namespace YnovResurrection.ViewModels.Pages
 {
-    class BuildingsListPageViewModel : IDataListPageViewModel
+    class BuildingsListPageViewModel : IModelListPageViewModel
     {
         public Type ModelType => typeof(Building);
 
-        public Page? EditModel(DataListPage page, IModel? modelNullable)
+        public Page? EditModel(ModelListPage page, IModel? modelNullable)
         {
             var buildingNullable = modelNullable ?? new Building();
             if (buildingNullable is not Building building) return null;

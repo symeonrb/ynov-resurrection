@@ -6,7 +6,7 @@ namespace YnovResurrection.ViewModels.Pages
 {
     public class SchoolPageViewModel
     {
-        public required DataListPage Page { get; set; }
+        public required ModelListPage Page { get; set; }
         public School ModelCopy { get; private set; }
         public School Model { get; set; }
         public bool IsEditMode { get; set; } = false;

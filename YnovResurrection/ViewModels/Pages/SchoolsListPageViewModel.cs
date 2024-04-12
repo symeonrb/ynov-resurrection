@@ -5,11 +5,11 @@ using YnovResurrection.Views.Pages;
 
 namespace YnovResurrection.ViewModels.Pages
 {
-    class SchoolsListPageViewModel : IDataListPageViewModel
+    class SchoolsListPageViewModel : IModelListPageViewModel
     {
         public Type ModelType => typeof(School);
 
-        public Page? EditModel(DataListPage page, IModel? modelNullable)
+        public Page? EditModel(ModelListPage page, IModel? modelNullable)
         {
             var schoolNullable = modelNullable ?? new School();
             if (schoolNullable is not School school) return null;

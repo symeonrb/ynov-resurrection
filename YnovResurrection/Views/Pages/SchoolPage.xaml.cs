@@ -31,8 +31,5 @@ public partial class SchoolPage
         NavigationService?.GoBack();
     }
 
-    private void CancelButton_Click(object sender, RoutedEventArgs e)
-    {
-        NavigationService?.GoBack();
-    }
+    private void CancelButton_Click(object sender, RoutedEventArgs e) => NavigationService?.GoBack();
 }

@@ -34,10 +34,6 @@ namespace YnovResurrection.Views.Pages
             NavigationService?.GoBack();
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Revenir à la page précédente
-            NavigationService?.GoBack();
-        }
+        private void CancelButton_Click(object sender, RoutedEventArgs e) => NavigationService?.GoBack();
     }
 }
