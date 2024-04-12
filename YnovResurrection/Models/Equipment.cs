@@ -2,16 +2,18 @@
 
 namespace YnovResurrection.Models;
 
-public class Equipment : IModel
+public class Equipment(string id, string type, string? tags) : IModel
 {
-
     [Key]
-    public string Id { get; set; }
-    
-    [Required]
-    public string Type { get; set; }
-    
-    [Required]
-    public string Tags { get; set; }
+    public string Id { get; set; } = id;
 
+    [Required]
+    public string Type { get; set; } = type;
+
+    [Required]
+    public string? Tags { get; set; } = tags;
+
+    public const string ChairType = "chair";
+    public const string Table1PersonType = "table1person";
+    public const string Table2PeopleType = "table2people";
 }

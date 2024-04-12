@@ -20,7 +20,7 @@ namespace YnovResurrection.Views.Pages
         {
             Page page = new BuildingsListPage();
             BuildingsListPageViewModel viewModel = new();
-            page.DataContext = viewModel;
+            // page.DataContext = viewModel;
             MainWindow.mainPage.Navigate(page);
         }
 

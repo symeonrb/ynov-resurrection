@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 using YnovResurrection.Models;
+using YnovResurrection.Services;
 using YnovResurrection.ViewModels.Pages;
 
 namespace YnovResurrection.Views.Pages
@@ -43,11 +44,13 @@ namespace YnovResurrection.Views.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            BuildingPageViewModel viewModel = new(new Building())
-            {
-                Page = this,
-                IsAddMode = true
-            };
+            BuildingPageViewModel viewModel =
+                new(BuildingService.Instance.CreateBuilding(address: "Entrez ici l'adresse du bâtiment",
+                    school: SchoolService.Instance.List().First()))
+                {
+                    Page = this,
+                    IsAddMode = true
+                };
             BuildingPage buildingPage = new(viewModel);
 
             // Naviguer vers la page de l'édition du bâtiment
