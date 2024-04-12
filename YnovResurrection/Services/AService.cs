@@ -7,7 +7,7 @@ namespace YnovResurrection.Services;
 /// </summary>
 public abstract class AService
 {
-    protected readonly AppDb _appDb = new();
+    protected readonly AppDb _appDb;
 
     /// <summary>
     /// Apply random uuid to entity

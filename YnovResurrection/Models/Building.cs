@@ -8,6 +8,7 @@ public class Building(string id, string address, School school, ICollection<Room
     [Key]
     public string Id { get; set; } = id;
 
+    [Required]
     public string Address { get; set; } = address;
 
     public School School { get; set; } = school;

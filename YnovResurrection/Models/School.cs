@@ -13,6 +13,7 @@ public class School(
     [Key]
     public string Id { get; set; } = id;
 
+    [Required]
     public string Name { get; set; } = name;
 
     // This is a temporary authorization implementation.

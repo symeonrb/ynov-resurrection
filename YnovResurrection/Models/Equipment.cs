@@ -7,8 +7,10 @@ public class Equipment(string id, string type, string? tags) : IModel
     [Key]
     public string Id { get; set; } = id;
 
+    [Required]
     public string Type { get; set; } = type;
 
+    [Required]
     public string? Tags { get; set; } = tags;
 
     public const string ChairType = "chair";

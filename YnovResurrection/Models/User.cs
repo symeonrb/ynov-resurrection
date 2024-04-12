@@ -15,10 +15,13 @@ public class User(
     [Key]
     public string Id { get; set; } = id;
 
+    [Required]
     public string FirstName { get; set; } = firstName;
 
+    [Required]
     public string LastName { get; set; } = lastName;
 
+    [EmailAddress]
     public string? Email { get; set; } = email;
 
     public string? Password { get; set; } = password;
