@@ -21,4 +21,6 @@ public class Module : IModel
     public bool IsRemote { get; set; }
 
     public bool AllowSharedRoom { get; set; }
+
+    public override String ToString() => Name;
 }

@@ -23,6 +23,8 @@ public class Room : IModel
     /// </summary>
     public string? Accessibility { get; set; }
 
+    public override String ToString() => Name;
+
     public int SeatsCount { get
         {
             var tables1Person = Equipments.Count(e => e.Type == Equipment.Table1PersonType);

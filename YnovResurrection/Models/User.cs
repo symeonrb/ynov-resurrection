@@ -23,4 +23,6 @@ public class User : IModel
     public bool IsSuperAdmin { get; set; }
 
     public ICollection<StudentGroup> StudentGroups { get; set; }
+
+    public override String ToString() => LastName.ToUpper() + ' ' + FirstName;
 }

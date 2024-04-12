@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace YnovResurrection.Models;
 
@@ -18,4 +19,6 @@ public class Course : IModel
     public Room? Room { get; set; }
 
     public bool IsRemote { get; set; }
+
+    public override String ToString() => StartTime.ToString(CultureInfo.CurrentCulture);
 }

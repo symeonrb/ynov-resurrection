@@ -14,4 +14,6 @@ public class Building : IModel
     public School School { get; set; }
 
     public ICollection<Room> Rooms { get; set; }
+
+    public override String ToString() => Address;
 }

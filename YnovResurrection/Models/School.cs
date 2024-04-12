@@ -17,4 +17,6 @@ public class School : IModel
     public ICollection<User> Teachers { get; set; }
 
     public ICollection<Building> Buildings { get; set; }
+
+    public override String ToString() => Name;
 }
