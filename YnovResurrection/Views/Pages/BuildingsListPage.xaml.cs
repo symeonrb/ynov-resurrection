@@ -23,7 +23,7 @@ namespace YnovResurrection.Views.Pages
         {
             // Créer une liste de noms de propriétés à afficher dans les colonnes
             List<string> propertyNames = typeof(Building).GetProperties()
-                                                          .Where(p => p.Name != "Id") // Exclure la propriété "Id"
+                                                          // .Where(p => p.Name != "Id") // Exclure la propriété "Id"
                                                           .Select(p => p.Name)
                                                           .ToList();
 

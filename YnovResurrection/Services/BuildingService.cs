@@ -27,24 +27,18 @@ public class BuildingService : AService
     {
         var building = new Building
         {
-            Id = Guid.NewGuid().ToString(),
             Address = address,
             School = school,
             Rooms = [],
         };
-        _fakeData.Add(building);
-        return building;
+        ApplyId(ref building);
 
-        // TODO :
-        // var building = new Building
-        // {
-        //     Address = address,
-        //     School = school
-        // };
-        //
-        // ApplyId(ref building);
+        _fakeData.Add(building);
+        // TODO : replace by this
         // _appDb.Buildings.Add(building);
         // Flush();
+
+        return building;
     }
 
     public ICollection<Building> List()

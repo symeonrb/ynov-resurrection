@@ -29,19 +29,14 @@ public class StudentGroupService : AService
             Name = name,
             Students = []
         };
-        _fakeData.Add(studentGroup);
-        return studentGroup;
+        ApplyId(ref studentGroup);
 
-        // TODO :
-        // var group = new StudentGroup
-        // {
-        //     Name = name
-        // };
-        //
-        // ApplyId(ref group);
-        // _appDb.StudentGroups.Add(group);
-        //
+        _fakeData.Add(studentGroup);
+        // TODO : replace by this
+        // _appDb.Buildings.Add(studentGroup);
         // Flush();
+
+        return studentGroup;
     }
     
     /// <summary>

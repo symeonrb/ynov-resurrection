@@ -79,7 +79,6 @@ public class ModuleService : AService
     {
         var module = new Module
         {
-            Id = Guid.NewGuid().ToString(),
             School = school,
             Name = name,
             TotalHours = totalHours,
@@ -90,25 +89,14 @@ public class ModuleService : AService
             IsRemote = isRemote,
             AllowSharedRoom = allowSharedRoom,
         };
-        _fakeData.Add(module);
-        return module;
+        ApplyId(ref module);
 
-        // TODO :
-        // var module = new Module
-        // {
-        //     School = school,
-        //     IsRemote = isRemote,
-        //     Name = name,
-        //     Teacher = teacher,
-        //     StudentGroup = studentGroup,
-        //     NeededEquipment = neededEquipments,
-        //     AllowSharedRoom = allowSharedRoom
-        // };
-        //
-        // _appDb.Modules.Add(module);
+        _fakeData.Add(module);
+        // TODO : replace by this
+        // _appDb.Buildings.Add(module);
         // Flush();
-        //
-        // return module;
+
+        return module;
     }
 
     public ICollection<Module> List()

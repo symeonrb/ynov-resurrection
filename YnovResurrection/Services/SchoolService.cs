@@ -24,20 +24,14 @@ public class SchoolService : AService
             Teachers = [],
             Buildings = []
         };
-        _fakeData.Add(school);
-        return school;
+        ApplyId(ref school);
 
-        // TODO :
-        // var school = new School
-        // {
-        //     Id = Guid.NewGuid().ToString(),
-        //     Name: name
-        // };
-        //
-        // ApplyId(ref school);
-        //
-        // _appDb.Schools.Add(school);
+        _fakeData.Add(school);
+        // TODO : replace by this
+        // _appDb.Buildings.Add(school);
         // Flush();
+
+        return school;
     }
 
     public ICollection<School> List()

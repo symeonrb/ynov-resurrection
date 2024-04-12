@@ -87,21 +87,14 @@ public class UserService : AService
             IsSuperAdmin = false,
             StudentGroups = studentGroups ?? []
         };
-        _fakeData.Add(user);
-        return user;
+        ApplyId(ref user);
 
-        // TODO :
-        // var user = new User
-        // {
-        //     FirstName = username,
-        //     Email = email,
-        //     //Password =
-        // };
-        //
-        // ApplyId(ref user);
-        //
-        // _appDb.Add(user);
+        _fakeData.Add(user);
+        // TODO : replace by this
+        // _appDb.Buildings.Add(user);
         // Flush();
+
+        return user;
     }
 
     public ICollection<User> List()

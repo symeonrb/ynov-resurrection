@@ -51,23 +51,14 @@ public class RoomService : AService
             Location = location,
             Accessibility = accessibility
         };
-        _fakeData.Add(room);
-        return room;
+        ApplyId(ref room);
 
-        // TODO :
-        // var room = new Room
-        // {
-        //     Accessibility = accessibility,
-        //     Location = location,
-        //     name: name,
-        //
-        //     building: building
-        // };
-        //
-        // ApplyId(ref room);
-        //
-        // _appDb.Rooms.Add(room);
+        _fakeData.Add(room);
+        // TODO : replace by this
+        // _appDb.Buildings.Add(room);
         // Flush();
+
+        return room;
     }
 
     /// <summary>

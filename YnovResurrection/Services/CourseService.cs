@@ -103,21 +103,18 @@ public class CourseService : AService
     {
         var course = new Course
         {
-            Id = Guid.NewGuid().ToString(),
             Module = module,
             StartTime = startTime,
             EndTime = endTime
         };
-        _fakeData.Add(course);
-        return course;
+        ApplyId(ref course);
 
-        // TODO :
-        // var course = new Course();
-        //
-        // ApplyId(ref course);
-        //
+        _fakeData.Add(course);
+        // TODO : replace by this
         // _appDb.Courses.Add(course);
         // Flush();
+
+        return course;
     }
 
     public ICollection<Course> List()

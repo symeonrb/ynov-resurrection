@@ -52,25 +52,17 @@ public class EquipmentService : AService
     {
         var equipment = new Equipment
         {
-            Id = Guid.NewGuid().ToString(),
             Type = type,
             Tags = tags,
         };
-        _fakeData.Add(equipment);
-        return equipment;
+        ApplyId(ref equipment);
 
-        // TODO :
-        // var e = new Equipment
-        // {
-        //     Type = type,
-        //     Tags = tags
-        // };
-        //
-        // ApplyId(ref e);
-        // _appDb.Equipments.Add(e);
+        _fakeData.Add(equipment);
+        // TODO : replace by this
+        // _appDb.Buildings.Add(equipment);
         // Flush();
-        //
-        // return e;
+
+        return equipment;
     }
 
     public ICollection<Equipment> List()
