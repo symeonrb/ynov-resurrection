@@ -55,7 +55,7 @@ public class EquipmentService : AService
             Type = type,
             Tags = tags,
         };
-        ApplyId(ref equipment);
+        ApplyId(equipment);
 
         _fakeData.Add(equipment);
         // TODO : replace by this

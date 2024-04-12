@@ -24,7 +24,7 @@ public class SchoolService : AService
             Teachers = [],
             Buildings = []
         };
-        ApplyId(ref school);
+        ApplyId(school);
 
         _fakeData.Add(school);
         // TODO : replace by this

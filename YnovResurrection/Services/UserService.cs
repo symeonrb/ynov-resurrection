@@ -87,7 +87,7 @@ public class UserService : AService
             IsSuperAdmin = false,
             StudentGroups = studentGroups ?? []
         };
-        ApplyId(ref user);
+        ApplyId(user);
 
         _fakeData.Add(user);
         // TODO : replace by this

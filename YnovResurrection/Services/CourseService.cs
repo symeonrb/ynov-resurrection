@@ -107,7 +107,7 @@ public class CourseService : AService
             StartTime = startTime,
             EndTime = endTime
         };
-        ApplyId(ref course);
+        ApplyId(course);
 
         _fakeData.Add(course);
         // TODO : replace by this

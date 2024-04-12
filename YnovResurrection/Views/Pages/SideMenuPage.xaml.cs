@@ -16,6 +16,14 @@ namespace YnovResurrection.Views.Pages
             InitializeComponent();
         }
 
+        private void Schools_Click(object sender, RoutedEventArgs e)
+        {
+            Page page = new SchoolsPage();
+            SchoolsListPageViewModel viewModel = new();
+            page.DataContext = viewModel;
+            MainWindow.MainPage.Navigate(page);
+        }
+
         private void Buildings_Click(object sender, RoutedEventArgs e)
         {
             Page page = new BuildingsListPage();

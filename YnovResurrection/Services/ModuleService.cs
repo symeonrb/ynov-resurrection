@@ -89,7 +89,7 @@ public class ModuleService : AService
             IsRemote = isRemote,
             AllowSharedRoom = allowSharedRoom,
         };
-        ApplyId(ref module);
+        ApplyId(module);
 
         _fakeData.Add(module);
         // TODO : replace by this

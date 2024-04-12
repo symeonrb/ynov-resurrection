@@ -29,7 +29,7 @@ public class StudentGroupService : AService
             Name = name,
             Students = []
         };
-        ApplyId(ref studentGroup);
+        ApplyId(studentGroup);
 
         _fakeData.Add(studentGroup);
         // TODO : replace by this

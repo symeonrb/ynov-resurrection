@@ -51,7 +51,7 @@ public class RoomService : AService
             Location = location,
             Accessibility = accessibility
         };
-        ApplyId(ref room);
+        ApplyId(room);
 
         _fakeData.Add(room);
         // TODO : replace by this

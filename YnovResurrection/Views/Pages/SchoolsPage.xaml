@@ -23,12 +23,28 @@
                 Margin="0,10,10,0"/>
 
         <!-- Liste des Bâtiments -->
-        <DataGrid x:Name="listSchools"
-                  AutoGenerateColumns="True"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Stretch"
-                  Margin="10,40,10,10"
-                  IsReadOnly="True">
+        <DataGrid x:Name="ListModels"
+            AutoGenerateColumns="True"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Margin="10,40,10,10"
+            IsReadOnly="True"
+            ItemsSource="{Binding List}">
+            <DataGrid.Columns>
+                <!-- Actions buttons column -->
+                <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Éditer" Click="EditButton_Click" Margin="2" />
+                                <Button Content="Supprimer" Click="DeleteButton_Click" Margin="2" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <!-- Attributes columns -->
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 

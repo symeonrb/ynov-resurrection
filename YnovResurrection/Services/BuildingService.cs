@@ -31,7 +31,7 @@ public class BuildingService : AService
             School = school,
             Rooms = [],
         };
-        ApplyId(ref building);
+        ApplyId(building);
 
         _fakeData.Add(building);
         // TODO : replace by this
