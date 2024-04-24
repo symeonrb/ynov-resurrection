@@ -1,0 +1,29 @@
+﻿<Window x:Class="YnovResurrection.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YnovResurrection"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+	<Grid>
+
+        <StackPanel Margin="10">
+            <TextBlock Text="Mot de passe :" Margin="0,0,0,5"/>
+            <PasswordBox x:Name="passwordBox" Width="200" Margin="0,0,0,10"/>
+            <Button Content="Afficher le mot de passe haché" Width="200" Click ="GenerateHash_Click" />
+            <TextBlock x:Name="hashText" Margin="0,10,0,0"/>
+            <TextBlock Text="Username :" Margin="0,0,0,5"/>
+            <TextBox x:Name="UsernameTextBox" Margin="0 0 0 10" />
+            <TextBlock Text="Password :" Margin="0,0,0,5"/>
+            <PasswordBox x:Name="PasswordTextBox" Margin="0 0 0 10"/>
+            <Button Content="Générer Token" Click="GenerateToken_Click"/>
+            <TextBlock x:Name="TokenGenerated" Margin="0,10,0,0"/>
+
+
+        </StackPanel>
+    </Grid>
+
+
+    
+</Window>

@@ -1,8 +1,8 @@
-﻿<Application x:Class="YnovResuction.App"
+﻿<Application x:Class="YnovResurrection.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:YnovResuction"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:YnovResurrection"
+             StartupUri="Views/Pages/LoginView.xaml">
     <Application.Resources>
          
     </Application.Resources>
