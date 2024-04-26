@@ -96,9 +96,18 @@ public class UserService : AService
         return user;
     }
 
+    public void DeleteUser(User user) => _fakeData.Remove(user);
+
     public ICollection<User> List()
     {
         return _fakeData; // TODO : _appDb.Users.ToList();
+    }
+
+    public void UpdateUser(User user)
+    {
+        var index = _fakeData.FindIndex(b => b.Id == user.Id);
+        if (index == -1) return;
+        _fakeData[index] = user;
     }
 
 }

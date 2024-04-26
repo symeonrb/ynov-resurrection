@@ -16,21 +16,15 @@ namespace YnovResurrection.Views.Pages
             InitializeComponent();
         }
 
-        private void Schools_Click(object sender, RoutedEventArgs e)
-        {
-            ModelListPage page = new(new SchoolsListPageViewModel());
-            MainWindow.MainPage.Navigate(page);
-        }
-
         private void Buildings_Click(object sender, RoutedEventArgs e)
         {
             ModelListPage page = new(new BuildingsListPageViewModel());
             MainWindow.MainPage.Navigate(page);
         }
 
-        private void Rooms_Click(object sender, RoutedEventArgs e)
+        private void Courses_Click(object sender, RoutedEventArgs e)
         {
-            ModelListPage page = new(new RoomsListPageViewModel());
+            ModelListPage page = new(new CoursesListPageViewModel());
             MainWindow.MainPage.Navigate(page);
         }
 
@@ -40,9 +34,21 @@ namespace YnovResurrection.Views.Pages
             MainWindow.MainPage.Navigate(page);
         }
 
-        private void Courses_Click(object sender, RoutedEventArgs e)
+        private void Rooms_Click(object sender, RoutedEventArgs e)
         {
-            ModelListPage page = new(new CoursesListPageViewModel());
+            ModelListPage page = new(new RoomsListPageViewModel());
+            MainWindow.MainPage.Navigate(page);
+        }
+
+        private void Schools_Click(object sender, RoutedEventArgs e)
+        {
+            ModelListPage page = new(new SchoolsListPageViewModel());
+            MainWindow.MainPage.Navigate(page);
+        }
+
+        private void Users_Click(object sender, RoutedEventArgs e)
+        {
+            ModelListPage page = new(new UsersListPageViewModel());
             MainWindow.MainPage.Navigate(page);
         }
     }
