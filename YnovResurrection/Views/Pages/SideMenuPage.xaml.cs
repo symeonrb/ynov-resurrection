@@ -28,6 +28,12 @@ namespace YnovResurrection.Views.Pages
             MainWindow.MainPage.Navigate(page);
         }
 
+        private void Equipments_Click(object sender, RoutedEventArgs e)
+        {
+            ModelListPage page = new(new EquipmentListPageViewModel());
+            MainWindow.MainPage.Navigate(page);
+        }
+
         private void Modules_Click(object sender, RoutedEventArgs e)
         {
             ModelListPage page = new(new ModulesListPageViewModel());

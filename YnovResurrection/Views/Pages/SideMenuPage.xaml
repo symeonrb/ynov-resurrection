@@ -22,13 +22,16 @@
                     <Hyperlink Click="Schools_Click" Foreground="#FFFFFDFA">Écoles</Hyperlink>
                 </TextBlock>
                 <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="Equipments_Click" Foreground="#FFFFFDFA">Équipements</Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="StudentGroups_Click" Foreground="#FFFFFDFA">Groupes d'étudiants</Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
                     <Hyperlink Click="Modules_Click" Foreground="#FFFFFDFA">Modules</Hyperlink>
                 </TextBlock>
                 <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
                     <Hyperlink Click="Rooms_Click" Foreground="#FFFFFDFA">Salles</Hyperlink>
-                </TextBlock>
-                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
-                    <Hyperlink Click="StudentGroups_Click" Foreground="#FFFFFDFA">Groupes d'étudiants</Hyperlink>
                 </TextBlock>
                 <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
                     <Hyperlink Click="Users_Click" Foreground="#FFFFFDFA">Utilisateurs</Hyperlink>
