@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace YnovResuction;
+namespace YnovResurrection;
 
 /// <summary>
 /// Interaction logic for App.xaml
