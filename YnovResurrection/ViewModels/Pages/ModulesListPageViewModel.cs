@@ -26,9 +26,8 @@ namespace YnovResurrection.ViewModels.Pages
 
         public void DeleteModel(IModel model)
         {
-            // TODO
-            // if (model is not Module module) return;
-            // ModuleService.Instance.DeleteModule(module);
+            if (model is not Module module) return;
+            ModuleService.Instance.DeleteModule(module);
         }
 
         public ICollection<Module> List => ModuleService.Instance.List();

@@ -107,6 +107,8 @@ public class ModuleService : AService
         return module;
     }
 
+    public void DeleteModule(Module module) => _fakeData.Remove(module);
+
     public IEnumerable<Module> FromSchoolId(string schoolId)
     {
         return Instance._fakeData.Where(r => r.School.Id == schoolId);

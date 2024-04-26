@@ -58,6 +58,8 @@ public class RoomService : AService
         return room;
     }
 
+    public void DeleteRoom(Room room) => _fakeData.Remove(room);
+
     /// <summary>
     /// Find the specified room in the building
     /// </summary>
@@ -72,6 +74,13 @@ public class RoomService : AService
     public ICollection<Room> List()
     {
         return _fakeData; // TODO : _appDb.Rooms.ToList();
+    }
+
+    public void UpdateRoom(Room room)
+    {
+        var index = _fakeData.FindIndex(b => b.Id == room.Id);
+        if (index == -1) return;
+        _fakeData[index] = room;
     }
     
 }

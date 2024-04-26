@@ -12,25 +12,22 @@ namespace YnovResurrection.ViewModels.Pages
 
         public Page? EditModel(ModelListPage page, IModel? modelNullable)
         {
-            return null;
-            // TODO
-            // var roomNullable = modelNullable ?? new Room();
-            // if (roomNullable is not Room room) return null;
-            // RoomPageViewModel editViewModel = new(room)
-            // {
-            //     Page = page,
-            //     IsEditMode = modelNullable != null,
-            //     IsAddMode = modelNullable == null
-            // };
-            // RoomPage editPage = new(editViewModel);
-            // return editPage;
+            var roomNullable = modelNullable ?? new Room();
+            if (roomNullable is not Room room) return null;
+            RoomPageViewModel editViewModel = new(room)
+            {
+                Page = page,
+                IsEditMode = modelNullable != null,
+                IsAddMode = modelNullable == null
+            };
+            RoomPage editPage = new(editViewModel);
+            return editPage;
         }
 
         public void DeleteModel(IModel model)
         {
-            // TODO
-            // if (model is not Room room) return;
-            // RoomService.Instance.DeleteRoom(room);
+            if (model is not Room room) return;
+            RoomService.Instance.DeleteRoom(room);
         }
 
         public ICollection<Room> List => RoomService.Instance.List();
