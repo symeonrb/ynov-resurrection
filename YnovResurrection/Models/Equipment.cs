@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YnovResurrection.Models;
 
+[Table("Equipments")]
 public class Equipment(string id, string type, string? tags) : IModel
 {
     [Key]

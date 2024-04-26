@@ -48,7 +48,7 @@ public class EquipmentService : AService
 
     private readonly List<Equipment> _fakeData = [];
 
-    public void CreateEquipment(string type, string? tags=null)
+    public void CreateEquipment(string type, string? tags = null)
     {
         _fakeData.Add(
             new Equipment(

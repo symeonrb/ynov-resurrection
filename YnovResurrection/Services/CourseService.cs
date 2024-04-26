@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Globalization;
+﻿using System.Net;
 using YnovResurrection.Models;
 
 namespace YnovResurrection.Services;
@@ -103,28 +102,25 @@ public class CourseService : AService
     /// </summary>
     public Course CreateCourse(Module module, DateTime startTime, DateTime endTime)
     {
-        var course = new Course(
-            id: Guid.NewGuid().ToString(),
-            module: module,
-            startTime: startTime,
-            endTime: endTime
-        );
-        _fakeData.Add(course);
-        return course;
+        var course = new Course
+        {
+            Id = Guid.NewGuid().ToString(),
+            Module = module,
+            StartTime = startTime,
+            EndTime = endTime
+        };
 
-        // TODO :
-        // var course = new Course();
-        //
-        // ApplyId(ref course);
-        //
-        // _appDb.Courses.Add(course);
-        // Flush();
+        ApplyId(ref course);
+
+        _appDb.Courses.Add(course);
+        Flush();
+
+        return course;
     }
 
     public ICollection<Course> List()
     {
-        Console.Write("YOOOOO");
-        return _fakeData; // TODO : _appDb.Courses.ToList();
+        return [.. _appDb.Courses];
     }
 
     private bool CoursesOverlap(Course c1, Course c2)

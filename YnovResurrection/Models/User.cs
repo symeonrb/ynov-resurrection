@@ -1,34 +1,29 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YnovResurrection.Models;
 
-public class User(
-    string id,
-    string firstName,
-    string lastName,
-    string? email,
-    string? password,
-    bool isSuperAdmin,
-    ICollection<StudentGroup> studentGroups)
+[Table("Users")]
+public class User
     : IModel
 {
     [Key]
-    public string Id { get; set; } = id;
+    public string Id { get; set; }
 
     [Required]
-    public string FirstName { get; set; } = firstName;
+    public string FirstName { get; set; }
 
     [Required]
-    public string LastName { get; set; } = lastName;
+    public string LastName { get; set; }
 
     [EmailAddress]
-    public string? Email { get; set; } = email;
+    public string? Email { get; set; }
 
-    public string? Password { get; set; } = password;
+    public string? Password { get; set; }
 
     // This is a temporary authorization implementation.
     // What is needed is a table Authorizations with a User, a Building and a Role.
-    public bool IsSuperAdmin { get; set; } = isSuperAdmin;
+    public bool IsSuperAdmin { get; set; }
 
-    public ICollection<StudentGroup> StudentGroups { get; set; } = studentGroups;
+    public ICollection<StudentGroup> StudentGroups { get; set; }
 }

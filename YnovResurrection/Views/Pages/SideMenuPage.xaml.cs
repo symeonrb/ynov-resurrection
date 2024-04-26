@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using YnovResurrection.ViewModels.Pages;
 
 namespace YnovResurrection.Views.Pages
 {
@@ -19,7 +18,8 @@ namespace YnovResurrection.Views.Pages
         private void Buildings_Click(object sender, RoutedEventArgs e)
         {
             Page page = new BuildingsListPage();
-            BuildingsListPageViewModel viewModel = new();
+            // TODO
+            // BuildingsListPageViewModel viewModel = new(); // Ne marche plus à cause de la nécessité d'un service
             // page.DataContext = viewModel;
             MainWindow.mainPage.Navigate(page);
         }
@@ -27,8 +27,6 @@ namespace YnovResurrection.Views.Pages
         private void Courses_Click(object sender, RoutedEventArgs e)
         {
             Page page = new CoursesListPage();
-            CoursesListPageViewModel viewModel = new();
-            page.DataContext = viewModel;
             MainWindow.mainPage.Navigate(page);
         }
 

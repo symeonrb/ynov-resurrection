@@ -1,55 +1,47 @@
-﻿using YnovResurrection.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using YnovResurrection.Models;
 
-namespace YnovResurrection.Services;
-
-public class BuildingService : AService
+namespace YnovResurrection.Services
 {
-    private BuildingService()
+    public class BuildingService(AppDb appDb)
     {
-        var schools = SchoolService.Instance.List();
+        private readonly AppDb _appDb = appDb ?? throw new ArgumentNullException(nameof(appDb));
 
-        var s1 = schools.ElementAt(0);
-        CreateBuilding(address: "1 Swing St", school: s1);
-        CreateBuilding(address: "2 Swing St", school: s1);
-        s1.Buildings = _fakeData.Where(b => b.School.Id == s1.Id).ToList();
+        public Building CreateBuilding(string address, School school)
+        {
+            var building = new Building
+            {
+                Id = Guid.NewGuid().ToString(),
+                Address = address,
+                School = school,
+                Rooms = []
+            };
 
-        var s2 = schools.ElementAt(1);
-        CreateBuilding(address: "000 Nowhere St", school: s2);
-        CreateBuilding(address: "001 Nowhere St", school: s2);
-        s2.Buildings = _fakeData.Where(b => b.School.Id == s2.Id).ToList();
+            _appDb.Buildings.Add(building);
+            _appDb.SaveChanges();
+
+            return building;
+        }
+
+        public void RemoveBuilding(Building building)
+        {
+            _appDb.Buildings.Remove(building);
+            _appDb.SaveChanges();
+        }
+
+        public void EditBuilding(Building building)
+        {
+            _appDb.Buildings.Update(building);
+            _appDb.SaveChanges();
+        }
+
+        public ObservableCollection<Building> List()
+        {
+            _appDb.Buildings.Load(); // Charger les données de la base de données dans la collection locale
+
+            return new ObservableCollection<Building>(_appDb.Buildings.Local);
+        }
     }
-
-    public static BuildingService Instance { get; } = new();
-
-    private readonly List<Building> _fakeData = [];
-
-    public Building CreateBuilding(string address, School school)
-    {
-        var building = new Building(
-            id: Guid.NewGuid().ToString(),
-            address: address,
-            school: school,
-            rooms: []
-        );
-        _fakeData.Add(building);
-        return building;
-
-        // TODO :
-        // var building = new Building
-        // {
-        //     Address = address,
-        //     School = school
-        // };
-        //
-        // ApplyId(ref building);
-        // _appDb.Buildings.Add(building);
-        // Flush();
-    }
-
-    public ICollection<Building> List()
-    {
-        Console.Write("BWAAAAAA");
-        return _fakeData; // TODO : _appDb.Buildings.ToList();
-    }
-    
 }

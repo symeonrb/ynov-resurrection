@@ -12,9 +12,21 @@ namespace YnovResurrection.Views.Pages
     /// </summary>
     public partial class BuildingsListPage : Page
     {
+
         public BuildingsListPage()
         {
             InitializeComponent();
+
+            // Obtenez une instance de BuildingService à partir du conteneur d'injection de dépendances
+            var buildingService = (BuildingService)App.Me
+                                                             .ServiceProvider
+                                                             .GetService(typeof(BuildingService));
+
+            // Créez le view model en passant l'instance de BuildingService
+            var viewModel = new BuildingsListPageViewModel(buildingService!);
+
+            // Définissez le contexte de données de la page sur le view model
+            DataContext = viewModel;
 
             AddColumnsToDataGrid();
         }
@@ -44,9 +56,13 @@ namespace YnovResurrection.Views.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            // Obtenez une instance de BuildingService à partir du conteneur d'injection de dépendances
+            var buildingService = (BuildingService)App.Me
+                                                             .ServiceProvider
+                                                             .GetService(typeof(BuildingService));
+
             BuildingPageViewModel viewModel =
-                new(BuildingService.Instance.CreateBuilding(address: "Entrez ici l'adresse du bâtiment",
-                    school: SchoolService.Instance.List().First()))
+                new(buildingService,new Building())
                 {
                     Page = this,
                     IsAddMode = true
@@ -67,12 +83,12 @@ namespace YnovResurrection.Views.Pages
 
             // Obtenez la source de données du DataGrid et
             // Supprimez l'élément de votre liste de données
-            if (listBuildings.ItemsSource is List<Building> itemsSource)
+            if (DataContext is BuildingsListPageViewModel viewModel)
             {
-                itemsSource.Remove(building!);
+                viewModel.DeleteBuilding(building);
 
                 // Rafraîchissez l'affichage du DataGrid
-                listBuildings.Items.Refresh();
+                //listBuildings.Items.Refresh();
             }
         }
 
@@ -84,9 +100,14 @@ namespace YnovResurrection.Views.Pages
             // Obtenez l'élément (Building) associé à la ligne sur laquelle le bouton a été cliqué
             Building building = (Building)button.DataContext;
 
+            // Obtenez une instance de BuildingService à partir du conteneur d'injection de dépendances
+            var buildingService = (BuildingService)App.Me
+                                                             .ServiceProvider
+                                                             .GetService(typeof(BuildingService));
+
             // Créer une instance de la page de l'édition du bâtiment en passant le bâtiment sélectionné en paramètre
-            
-            BuildingPageViewModel viewModel = new(building)
+
+            BuildingPageViewModel viewModel = new(buildingService,building)
             {
                 Page = this,
                 IsEditMode = true

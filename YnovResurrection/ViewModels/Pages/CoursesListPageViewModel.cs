@@ -11,7 +11,7 @@ namespace YnovResurrection.ViewModels.Pages
 
         public ICollection<Course> Courses
         {
-            get {  return CourseService.Instance.List(); }
+            get { return CourseService.Instance.List(); }
             // set { _CoursesList = value; }
         }
     }

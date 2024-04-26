@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using YnovResurrection.Models;
+﻿using YnovResurrection.Models;
 
 namespace YnovResurrection.Services;
 
@@ -23,25 +22,24 @@ public class StudentGroupService : AService
     /// <returns></returns>
     public void CreateStudentGroup(string name)
     {
-        _fakeData.Add(new StudentGroup(
-                id: Guid.NewGuid().ToString(),
-                name: name,
-                students: []
-            )
-        );
+        //_fakeData.Add(new StudentGroup(
+        //        id: Guid.NewGuid().ToString(),
+        //        name: name,
+        //        students: []
+        //    )
+        //);
 
-        // TODO :
-        // var group = new StudentGroup
-        // {
-        //     Name = name
-        // };
-        //
-        // ApplyId(ref group);
-        // _appDb.StudentGroups.Add(group);
-        //
-        // Flush();
+        var group = new StudentGroup
+        {
+            Name = name
+        };
+
+        ApplyId(ref group);
+        _appDb.StudentGroups.Add(group);
+
+        Flush();
     }
-    
+
     /// <summary>
     /// Add the specified student to the group
     /// </summary>
@@ -57,5 +55,5 @@ public class StudentGroupService : AService
     {
         return _fakeData; // TODO : _appDb.StudentGroups.ToList();
     }
-    
+
 }

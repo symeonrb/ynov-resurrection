@@ -66,53 +66,40 @@ public class ModuleService : AService
     /// <param name="neededEquipments"></param>
     /// <param name="isRemote"></param>
     /// <param name="allowSharedRoom"></param>
-    public void CreateModule(
+    public Module CreateModule(
         School school,
         string name,
         int totalHours,
         User teacher,
         StudentGroup studentGroup,
-        string neededEquipments="",
-        bool isRemote=false,
-        bool allowSharedRoom=false
+        string neededEquipments = "",
+        bool isRemote = false,
+        bool allowSharedRoom = false
     )
     {
-        _fakeData.Add(
-            new Module(
-                id: Guid.NewGuid().ToString(),
-                school: school,
-                name: name,
-                totalHours: totalHours,
-                teacher: teacher,
-                studentGroup: studentGroup,
-                courses: [],
-                neededEquipment: neededEquipments,
-                isRemote: isRemote,
-                allowSharedRoom: allowSharedRoom
-            )
-        );
+        var module = new Module
+        {
+            School = school,
+            IsRemote = isRemote,
+            Name = name,
+            TotalHours = totalHours,
+            Teacher = teacher,
+            StudentGroup = studentGroup,
+            NeededEquipment = neededEquipments,
+            AllowSharedRoom = allowSharedRoom
+        };
 
-        // TODO :
-        // var module = new Module
-        // {
-        //     School = school,
-        //     IsRemote = isRemote,
-        //     Name = name,
-        //     Teacher = teacher,
-        //     StudentGroup = studentGroup,
-        //     NeededEquipment = neededEquipments,
-        //     AllowSharedRoom = allowSharedRoom
-        // };
-        //
-        // _appDb.Modules.Add(module);
-        // Flush();
-        //
-        // return module;
+        ApplyId( ref module );
+
+        _appDb.Modules.Add(module);
+        Flush();
+
+        return module;
     }
 
     public ICollection<Module> List()
     {
-        return _fakeData; // TODO : _appDb.Equipments.ToList();
+        return [.. _appDb.Modules];
     }
 
     /// <summary>

@@ -1,22 +1,24 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YnovResurrection.Models;
 
-public class Course(string id, Module module, DateTime startTime, DateTime endTime, Room? room=null, bool isRemote=false)
+[Table("Courses")]
+public class Course
     : IModel
 {
-    public string Id { get; set; } = id;
+    public string Id { get; set; }
 
-    public Module Module { get; set; } = module;
-
-    [Required]
-    public DateTime StartTime { get; set; } = startTime;
+    public Module Module { get; set; }
 
     [Required]
-    public DateTime EndTime { get; set; } = endTime;
+    public DateTime StartTime { get; set; }
 
     [Required]
-    public Room? Room { get; set; } = room;
+    public DateTime EndTime { get; set; }
 
-    public bool IsRemote { get; set; } = isRemote;
+    [Required]
+    public Room? Room { get; set; } = null;
+
+    public bool IsRemote { get; set; } = false;
 }

@@ -1,17 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YnovResurrection.Models;
 
-public class Building(string id, string address, School school, ICollection<Room> rooms)
+[Table("Buildings")]
+public class Building
     : IModel
 {
     [Key]
-    public string Id { get; set; } = id;
+    public string Id { get; set; }
 
     [Required]
-    public string Address { get; set; } = address;
+    public string Address { get; set; }
 
-    public School School { get; set; } = school;
+    public School School { get; set; }
 
-    public ICollection<Room> Rooms { get; set; } = rooms;
+    public ICollection<Room> Rooms { get; set; }
 }
