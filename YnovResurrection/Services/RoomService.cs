@@ -6,7 +6,10 @@ public class RoomService : AService
 {
     private RoomService()
     {
-        var buildings = BuildingService.Instance.List();
+        var buildingService = (BuildingService)App.Me
+            .ServiceProvider
+            .GetService(typeof(BuildingService))!;
+        var buildings = buildingService.List();
 
         var b1 = buildings.ElementAt(0);
         CreateRoom(building: b1, name: "a101");
@@ -30,12 +33,12 @@ public class RoomService : AService
 
     public Room? FromId(string roomId)
     {
-        return Instance._fakeData.SingleOrDefault(r => r.Id == roomId);
+        return _fakeData.SingleOrDefault(r => r.Id == roomId);
     }
 
     public IEnumerable<Room> FromSchoolId(string schoolId)
     {
-        return Instance._fakeData.Where(r => r.Building.School.Id == schoolId);
+        return _fakeData.Where(r => r.Building.School.Id == schoolId);
     }
 
     public Room CreateRoom(Building building, string name, string? location=null, string? accessibility=null)

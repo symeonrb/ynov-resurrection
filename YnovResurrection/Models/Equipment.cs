@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YnovResurrection.Models;
 
+[Table("Equipments")]
 public class Equipment : IModel
 {
     [Key]
@@ -10,7 +12,6 @@ public class Equipment : IModel
     [Required]
     public string Type { get; set; }
 
-    [Required]
     public string? Tags { get; set; }
 
     public const string ChairType = "chair";

@@ -1,57 +1,45 @@
-﻿using YnovResurrection.Models;
+﻿using System.Collections.ObjectModel;
+using Microsoft.EntityFrameworkCore;
+using YnovResurrection.Models;
 
 namespace YnovResurrection.Services;
 
-public class BuildingService : AService
+public class BuildingService(AppDb appDb)
 {
-    private BuildingService()
-    {
-        var schools = SchoolService.Instance.List();
-
-        var s1 = schools.ElementAt(0);
-        CreateBuilding(address: "1 Swing St", school: s1);
-        CreateBuilding(address: "2 Swing St", school: s1);
-        s1.Buildings = _fakeData.Where(b => b.School.Id == s1.Id).ToList();
-
-        var s2 = schools.ElementAt(1);
-        CreateBuilding(address: "000 Nowhere St", school: s2);
-        CreateBuilding(address: "001 Nowhere St", school: s2);
-        s2.Buildings = _fakeData.Where(b => b.School.Id == s2.Id).ToList();
-    }
-
-    public static BuildingService Instance { get; } = new();
-
-    private readonly List<Building> _fakeData = [];
+    private new readonly AppDb _appDb = appDb ?? throw new ArgumentNullException(nameof(appDb));
 
     public Building CreateBuilding(string address, School school)
     {
         var building = new Building
         {
+            Id = Guid.NewGuid().ToString(),
             Address = address,
             School = school,
-            Rooms = [],
+            Rooms = []
         };
-        ApplyId(building);
 
-        _fakeData.Add(building);
-        // TODO : replace by this
-        // _appDb.Buildings.Add(building);
-        // Flush();
+        _appDb.Buildings.Add(building);
+        _appDb.SaveChanges();
 
         return building;
     }
 
-    public void DeleteBuilding(Building building) => _fakeData.Remove(building);
-
-    public ICollection<Building> List()
+    public void RemoveBuilding(Building building)
     {
-        return _fakeData; // TODO : _appDb.Buildings.ToList();
+        _appDb.Buildings.Remove(building);
+        _appDb.SaveChanges();
     }
 
-    public void UpdateBuilding(Building building)
+    public void EditBuilding(Building building)
     {
-        var index = _fakeData.FindIndex(b => b.Id == building.Id);
-        if (index == -1) return;
-        _fakeData[index] = building;
+        _appDb.Buildings.Update(building);
+        _appDb.SaveChanges();
+    }
+
+    public ObservableCollection<Building> List()
+    {
+        _appDb.Buildings.Load(); // Charger les données de la base de données dans la collection locale
+
+        return new ObservableCollection<Building>(_appDb.Buildings.Local);
     }
 }

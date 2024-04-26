@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YnovResurrection.Models;
 
+[Table("StudentGroups")]
 public class StudentGroup : IModel
 {
     [Key]

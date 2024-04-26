@@ -1,5 +1,8 @@
-﻿namespace YnovResurrection.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
+namespace YnovResurrection.Models;
+
+[Table("Modules")]
 public class Module : IModel
 {
     public string Id { get; set; }
@@ -16,11 +19,11 @@ public class Module : IModel
 
     public ICollection<Course> Courses { get; set; }
 
-    public string? NeededEquipment { get; set; }
+    public string? NeededEquipment { get; set; } = null;
 
-    public bool IsRemote { get; set; }
+    public bool IsRemote { get; set; } = false;
 
-    public bool AllowSharedRoom { get; set; }
+    public bool AllowSharedRoom { get; set; } = false;
 
     public override String ToString() => Name;
 }

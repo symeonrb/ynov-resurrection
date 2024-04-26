@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YnovResurrection.Models;
 
+[Table("Rooms")]
 public class Room : IModel
 {
     [Key]
@@ -23,9 +25,9 @@ public class Room : IModel
     /// </summary>
     public string? Accessibility { get; set; }
 
-    public override String ToString() => Name;
-
-    public int SeatsCount { get
+    public int SeatsCount
+    {
+        get
         {
             var tables1Person = Equipments.Count(e => e.Type == Equipment.Table1PersonType);
             var tables2People = Equipments.Count(e => e.Type == Equipment.Table2PeopleType);
