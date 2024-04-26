@@ -20,6 +20,7 @@ public class EquipmentService : AService
             chair, chair,
             table2People,
         ];
+        Console.Write(rooms.ElementAt(0));
         rooms.ElementAt(1).Equipments = [
             chair, chair, chair, chair, chair, chair,
             table2People, table2People, table2People,
@@ -65,9 +66,18 @@ public class EquipmentService : AService
         return equipment;
     }
 
+    public void DeleteEquipment(Equipment equipment) => _fakeData.Remove(equipment);
+
     public ICollection<Equipment> List()
     {
         return _fakeData; // TODO : _appDb.Equipments.ToList();
+    }
+
+    public void UpdateEquipment(Equipment equipment)
+    {
+        var index = _fakeData.FindIndex(b => b.Id == equipment.Id);
+        if (index == -1) return;
+        _fakeData[index] = equipment;
     }
 
 }

@@ -61,9 +61,21 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Salle:" Margin="0,0,10,0" VerticalAlignment="Center" Width="120" />
                 <ComboBox ItemsSource="{Binding Rooms}"
-                    SelectedItem="{Binding Model.Room}"
-                    DisplayMemberPath="Name"
-                    Grid.Column="1" />
+                          SelectedItem="{Binding Model.Room}"
+                          DisplayMemberPath="Name"
+                          Name="RoomInputField"
+                          Grid.Column="1" />
+            </Grid>
+
+            <!-- AssignRoom Button -->
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="" Margin="0,0,10,0" VerticalAlignment="Center" Width="120" />
+                <Button Content="Attribuer automatiquement une salle à ce cours" Click="AssignRoomButton_Click"
+                        Grid.Column="1" />
             </Grid>
 
             <!-- Buttons for actions -->

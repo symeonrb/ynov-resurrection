@@ -16,12 +16,6 @@ namespace YnovResurrection.Views.Pages
             InitializeComponent();
         }
 
-        private void Schools_Click(object sender, RoutedEventArgs e)
-        {
-            ModelListPage page = new(new SchoolsListPageViewModel());
-            MainWindow.MainPage.Navigate(page);
-        }
-
         private void Buildings_Click(object sender, RoutedEventArgs e)
         {
             ModelListPage page = new(new BuildingsListPageViewModel());
@@ -34,14 +28,40 @@ namespace YnovResurrection.Views.Pages
             MainWindow.MainPage.Navigate(page);
         }
 
-        private void Menu3_Click(object sender, RoutedEventArgs e)
+        private void Equipments_Click(object sender, RoutedEventArgs e)
         {
-            //mainFrame.Navigate(new MainMenu());
+            ModelListPage page = new(new EquipmentListPageViewModel());
+            MainWindow.MainPage.Navigate(page);
         }
 
-        private void Menu4_Click(object sender, RoutedEventArgs e)
+        private void Modules_Click(object sender, RoutedEventArgs e)
         {
-            //mainFrame.Navigate(new MainMenu());
+            ModelListPage page = new(new ModulesListPageViewModel());
+            MainWindow.MainPage.Navigate(page);
+        }
+
+        private void Rooms_Click(object sender, RoutedEventArgs e)
+        {
+            ModelListPage page = new(new RoomsListPageViewModel());
+            MainWindow.MainPage.Navigate(page);
+        }
+
+        private void Schools_Click(object sender, RoutedEventArgs e)
+        {
+            ModelListPage page = new(new SchoolsListPageViewModel());
+            MainWindow.MainPage.Navigate(page);
+        }
+
+        private void StudentGroups_Click(object sender, RoutedEventArgs e)
+        {
+            ModelListPage page = new(new StudentGroupsListPageViewModel());
+            MainWindow.MainPage.Navigate(page);
+        }
+
+        private void Users_Click(object sender, RoutedEventArgs e)
+        {
+            ModelListPage page = new(new UsersListPageViewModel());
+            MainWindow.MainPage.Navigate(page);
         }
     }
 }

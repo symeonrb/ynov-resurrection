@@ -13,14 +13,29 @@
             <!--Old color : FF1F9C90-->
             <StackPanel DockPanel.Dock="Top" Orientation="Vertical" Background="#1D1D1D" Width="150">
                 <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="Buildings_Click" Foreground="#FFFFFDFA">Bâtiments</Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="Courses_Click" Foreground="#FFFFFDFA">Cours</Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
                     <Hyperlink Click="Schools_Click" Foreground="#FFFFFDFA">Écoles</Hyperlink>
                 </TextBlock>
                 <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
-                    <Hyperlink Click="Buildings_Click" Foreground="#FFFFFDFA">Bâtiments</Hyperlink>
+                    <Hyperlink Click="Equipments_Click" Foreground="#FFFFFDFA">Équipements</Hyperlink>
                 </TextBlock>
-                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}"><Hyperlink Click="Courses_Click" Foreground="#FFFFFDFA">Cours</Hyperlink></TextBlock>
-                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}"><Hyperlink Click="Menu3_Click" Foreground="#FFFFFDFA">Menu3</Hyperlink></TextBlock>
-                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}"><Hyperlink Click="Menu4_Click" Foreground="#FFFFFDFA">Menu4</Hyperlink></TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="StudentGroups_Click" Foreground="#FFFFFDFA">Groupes d'étudiants</Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="Modules_Click" Foreground="#FFFFFDFA">Modules</Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="Rooms_Click" Foreground="#FFFFFDFA">Salles</Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="Users_Click" Foreground="#FFFFFDFA">Utilisateurs</Hyperlink>
+                </TextBlock>
             </StackPanel>
         </DockPanel>
     </Grid>
