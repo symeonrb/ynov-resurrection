@@ -35,6 +35,7 @@ namespace YnovResurrection.Views.Pages
             try
             {
                 CourseService.Instance.AssignRoomToCourse(viewModel.Model);
+                RoomInputField.SelectedItem = viewModel.Model.Room;
             }
             catch (Exception error)
             {
