@@ -6,37 +6,18 @@ public class StudentGroupService : AService
 {
     private StudentGroupService()
     {
-        CreateStudentGroup(name: "Bachelor 1");
-        CreateStudentGroup(name: "Bachelor 2");
-        CreateStudentGroup(name: "Students learning French");
+        var schools = SchoolService.Instance.List();
+
+        var s1 = schools.ElementAt(0);
+        CreateStudentGroup(name: "Bachelor 1", school: s1);
+        CreateStudentGroup(name: "Bachelor 2", school: s1);
+        CreateStudentGroup(name: "Students learning French", school: s1);
     }
 
     public static StudentGroupService Instance { get; } = new();
 
     private readonly List<StudentGroup> _fakeData = [];
 
-    /// <summary>
-    /// Create and return a new student group
-    /// </summary>
-    /// <param name="name"></param>
-    /// <returns></returns>
-    public StudentGroup CreateStudentGroup(string name)
-    {
-        var studentGroup = new StudentGroup
-        {
-            Name = name,
-            Students = []
-        };
-        ApplyId(studentGroup);
-
-        _fakeData.Add(studentGroup);
-        // TODO : replace by this
-        // _appDb.Buildings.Add(studentGroup);
-        // Flush();
-
-        return studentGroup;
-    }
-    
     /// <summary>
     /// Add the specified student to the group
     /// </summary>
@@ -48,9 +29,47 @@ public class StudentGroupService : AService
         Flush();
     }
 
+    /// <summary>
+    /// Create and return a new student group
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="school"></param>
+    /// <returns></returns>
+    public StudentGroup CreateStudentGroup(string name, School school)
+    {
+        var studentGroup = new StudentGroup
+        {
+            Name = name,
+            School = school,
+            Students = []
+        };
+        ApplyId(studentGroup);
+
+        _fakeData.Add(studentGroup);
+        // TODO : replace by this
+        // _appDb.Buildings.Add(studentGroup);
+        // Flush();
+
+        return studentGroup;
+    }
+
+    public void DeleteStudentGroup(StudentGroup studentGroup) => _fakeData.Remove(studentGroup);
+
+    public IEnumerable<StudentGroup> FromSchoolId(string schoolId)
+    {
+        return Instance._fakeData.Where(sg => sg.School.Id == schoolId);
+    }
+
     public ICollection<StudentGroup> List()
     {
         return _fakeData; // TODO : _appDb.StudentGroups.ToList();
+    }
+
+    public void UpdateStudentGroup(StudentGroup studentGroup)
+    {
+        var index = _fakeData.FindIndex(b => b.Id == studentGroup.Id);
+        if (index == -1) return;
+        _fakeData[index] = studentGroup;
     }
     
 }

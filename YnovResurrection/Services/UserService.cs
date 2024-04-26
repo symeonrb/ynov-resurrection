@@ -23,8 +23,8 @@ public class UserService : AService
         CreateUser(firstName: "Enrico", studentGroups: [bachelor2]);
         CreateUser(firstName: "Sirena", studentGroups: [bachelor2]);
         CreateUser(firstName: "Duhduh", studentGroups: [bachelor2]);
-        CreateUser(firstName: "Director");
-        CreateUser(firstName: "ComputerGuy");
+        CreateUser(firstName: "Director", isSuperAdmin: true);
+        CreateUser(firstName: "ComputerGuy", isSuperAdmin: true);
         CreateUser(firstName: "TeacherBanjo");
         CreateUser(firstName: "TeacherDJ");
         CreateUser(firstName: "TeacherGuitar");
@@ -74,16 +74,16 @@ public class UserService : AService
     private readonly List<User> _fakeData = [];
 
     //TODO
-    public User CreateUser(string firstName, ICollection<StudentGroup>? studentGroups=null)
+    public User CreateUser(string firstName, ICollection<StudentGroup>? studentGroups=null, bool isSuperAdmin=false)
     {
 
         var user = new User
         {
             FirstName = firstName,
             LastName = "",
-            Email = null,
+            Email = firstName.ToLower() + "@gmail.com",
             Password = null,
-            IsSuperAdmin = false,
+            IsSuperAdmin = isSuperAdmin,
             StudentGroups = studentGroups ?? []
         };
         ApplyId(user);
@@ -96,9 +96,18 @@ public class UserService : AService
         return user;
     }
 
+    public void DeleteUser(User user) => _fakeData.Remove(user);
+
     public ICollection<User> List()
     {
         return _fakeData; // TODO : _appDb.Users.ToList();
+    }
+
+    public void UpdateUser(User user)
+    {
+        var index = _fakeData.FindIndex(b => b.Id == user.Id);
+        if (index == -1) return;
+        _fakeData[index] = user;
     }
 
 }
