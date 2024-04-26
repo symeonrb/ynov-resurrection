@@ -46,6 +46,12 @@ namespace YnovResurrection.Views.Pages
             MainWindow.MainPage.Navigate(page);
         }
 
+        private void StudentGroups_Click(object sender, RoutedEventArgs e)
+        {
+            ModelListPage page = new(new StudentGroupsListPageViewModel());
+            MainWindow.MainPage.Navigate(page);
+        }
+
         private void Users_Click(object sender, RoutedEventArgs e)
         {
             ModelListPage page = new(new UsersListPageViewModel());

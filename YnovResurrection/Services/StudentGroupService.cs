@@ -53,6 +53,8 @@ public class StudentGroupService : AService
         return studentGroup;
     }
 
+    public void DeleteStudentGroup(StudentGroup studentGroup) => _fakeData.Remove(studentGroup);
+
     public IEnumerable<StudentGroup> FromSchoolId(string schoolId)
     {
         return Instance._fakeData.Where(sg => sg.School.Id == schoolId);
@@ -61,6 +63,13 @@ public class StudentGroupService : AService
     public ICollection<StudentGroup> List()
     {
         return _fakeData; // TODO : _appDb.StudentGroups.ToList();
+    }
+
+    public void UpdateStudentGroup(StudentGroup studentGroup)
+    {
+        var index = _fakeData.FindIndex(b => b.Id == studentGroup.Id);
+        if (index == -1) return;
+        _fakeData[index] = studentGroup;
     }
     
 }

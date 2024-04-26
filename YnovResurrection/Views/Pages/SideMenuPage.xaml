@@ -28,6 +28,9 @@
                     <Hyperlink Click="Rooms_Click" Foreground="#FFFFFDFA">Salles</Hyperlink>
                 </TextBlock>
                 <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
+                    <Hyperlink Click="StudentGroups_Click" Foreground="#FFFFFDFA">Groupes d'étudiants</Hyperlink>
+                </TextBlock>
+                <TextBlock Margin="5" FontFamily="{DynamicResource FontYnovResurrection}">
                     <Hyperlink Click="Users_Click" Foreground="#FFFFFDFA">Utilisateurs</Hyperlink>
                 </TextBlock>
             </StackPanel>
