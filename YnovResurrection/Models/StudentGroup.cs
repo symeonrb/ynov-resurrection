@@ -9,6 +9,8 @@ public class StudentGroup : IModel
 
     public string Name { get; set; }
 
+    [Required] public School School { get; set; }
+
     public ICollection<User> Students { get; set; }
 
     public override String ToString() => Name;

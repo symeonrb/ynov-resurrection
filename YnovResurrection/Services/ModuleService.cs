@@ -80,7 +80,7 @@ public class ModuleService : AService
         int totalHours,
         User teacher,
         StudentGroup studentGroup,
-        string neededEquipments="",
+        string? neededEquipments="",
         bool isRemote=false,
         bool allowSharedRoom=false
     )
@@ -146,4 +146,10 @@ public class ModuleService : AService
         return _appDb.Modules.Where(m => m.StudentGroup == studentGroup);
     }
 
+    public void UpdateModule(Module module)
+    {
+        var index = _fakeData.FindIndex(b => b.Id == module.Id);
+        if (index == -1) return;
+        _fakeData[index] = module;
+    }
 }

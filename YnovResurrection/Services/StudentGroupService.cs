@@ -6,9 +6,12 @@ public class StudentGroupService : AService
 {
     private StudentGroupService()
     {
-        CreateStudentGroup(name: "Bachelor 1");
-        CreateStudentGroup(name: "Bachelor 2");
-        CreateStudentGroup(name: "Students learning French");
+        var schools = SchoolService.Instance.List();
+
+        var s1 = schools.ElementAt(0);
+        CreateStudentGroup(name: "Bachelor 1", school: s1);
+        CreateStudentGroup(name: "Bachelor 2", school: s1);
+        CreateStudentGroup(name: "Students learning French", school: s1);
     }
 
     public static StudentGroupService Instance { get; } = new();
@@ -16,15 +19,28 @@ public class StudentGroupService : AService
     private readonly List<StudentGroup> _fakeData = [];
 
     /// <summary>
+    /// Add the specified student to the group
+    /// </summary>
+    /// <param name="group"></param>
+    /// <param name="student"></param>
+    public void AddStudent(StudentGroup group, User student)
+    {
+        group.Students.Add(student);
+        Flush();
+    }
+
+    /// <summary>
     /// Create and return a new student group
     /// </summary>
     /// <param name="name"></param>
+    /// <param name="school"></param>
     /// <returns></returns>
-    public StudentGroup CreateStudentGroup(string name)
+    public StudentGroup CreateStudentGroup(string name, School school)
     {
         var studentGroup = new StudentGroup
         {
             Name = name,
+            School = school,
             Students = []
         };
         ApplyId(studentGroup);
@@ -36,16 +52,10 @@ public class StudentGroupService : AService
 
         return studentGroup;
     }
-    
-    /// <summary>
-    /// Add the specified student to the group
-    /// </summary>
-    /// <param name="group"></param>
-    /// <param name="student"></param>
-    public void AddStudent(StudentGroup group, User student)
+
+    public IEnumerable<StudentGroup> FromSchoolId(string schoolId)
     {
-        group.Students.Add(student);
-        Flush();
+        return Instance._fakeData.Where(sg => sg.School.Id == schoolId);
     }
 
     public ICollection<StudentGroup> List()
