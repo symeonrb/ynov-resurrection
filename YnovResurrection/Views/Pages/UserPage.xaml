@@ -20,6 +20,16 @@
                 <TextBox Name="name" Text="{Binding Model.Name}" Grid.Column="1" />
             </Grid>
 
+            <!-- IsSuperAdmin input field -->
+            <Grid Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Super administrateur:" Margin="0,0,10,0" VerticalAlignment="Center" Width="120" />
+                <CheckBox Grid.Column="1" IsChecked="{Binding Model.IsSuperAdmin}" />
+            </Grid>
+
             <!-- Buttons for actions -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Content="Ajouter" Click="AddButton_Click"
