@@ -1,8 +1,6 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
-using YnovResurrection.ViewModels.Pages;
-using YnovResurrection.Views.Pages;
 
 namespace YnovResurrection;
 
