@@ -29,6 +29,19 @@ namespace YnovResurrection.Views.Pages
             NavigationService?.GoBack();
         }
 
+        private void AssignRoomButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is not CoursePageViewModel viewModel) return;
+            try
+            {
+                CourseService.Instance.AssignRoomToCourse(viewModel.Model);
+            }
+            catch (Exception error)
+            {
+                Console.Write(error);
+            }
+        }
+
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             if (DataContext is not CoursePageViewModel viewModel) return;
