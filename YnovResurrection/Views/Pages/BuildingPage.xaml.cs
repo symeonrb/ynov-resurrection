@@ -1,5 +1,6 @@
 ﻿using System.Windows;
-using YnovResurrection.Services;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 using YnovResurrection.ViewModels.Pages;
 
 namespace YnovResurrection.Views.Pages
@@ -7,7 +8,7 @@ namespace YnovResurrection.Views.Pages
     /// <summary>
     /// Logique d'interaction pour BuildingPage.xaml
     /// </summary>
-    public partial class BuildingPage
+    public partial class BuildingPage : Page
     {
         public BuildingPage(BuildingPageViewModel viewModel)
         {
@@ -17,20 +18,28 @@ namespace YnovResurrection.Views.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is not BuildingPageViewModel viewModel) return;
-            BuildingService.Instance.CreateBuilding(
-                address: viewModel.Model.Address,
-                school: viewModel.Model.School
-            );
-            viewModel.Page.ListModels.Items.Refresh();
+            if (DataContext is BuildingPageViewModel viewModel)
+            {
+                viewModel.AddBuilding();
+                //viewModel.Page.listBuildings.Items.Refresh();
+            }
+
+            // Revenir à la page précédente
             NavigationService?.GoBack();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DataContext is not BuildingPageViewModel viewModel) return;
-            BuildingService.Instance.UpdateBuilding(building: viewModel.Model);
-            viewModel.Page.ListModels.Items.Refresh();
+            // Code pour save en BDD
+            // TODO
+
+            // Convertir le DataContext en instance de votre ViewModel
+            if (DataContext is BuildingPageViewModel viewModel)
+            {
+                viewModel.SaveBuilding();
+            }
+
+            // Revenir à la page précédente
             NavigationService?.GoBack();
         }
 

@@ -6,7 +6,7 @@ public class RoomService : AService
 {
     private RoomService()
     {
-        var buildings = BuildingService.Instance.List();
+        var buildings = BuildingService().List();
 
         var b1 = buildings.ElementAt(0);
         CreateRoom(building: b1, name: "a101");

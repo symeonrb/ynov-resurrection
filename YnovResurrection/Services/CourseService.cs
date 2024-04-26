@@ -1,4 +1,6 @@
-﻿using YnovResurrection.Models;
+using System.Diagnostics;
+using System.Globalization;
+using YnovResurrection.Models;
 
 namespace YnovResurrection.Services;
 
@@ -140,10 +142,7 @@ public class CourseService : AService
 
     public void DeleteCourse(Course course) => _fakeData.Remove(course);
 
-    public ICollection<Course> List()
-    {
-        return _fakeData; // TODO : _appDb.Courses.ToList();
-    }
+    public ICollection<Course> List() => _fakeData; // TODO : _appDb.Courses.ToList();
 
     public void UpdateCourse(Course course)
     {

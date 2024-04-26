@@ -3,4 +3,6 @@
 ################################################################################
 
 /.vs
-/YnovResurrection/.vs
+/YnovResurrection/.vs/*
+/YnovResurection/.vs/YnovResurection
+/YnovResurection/obj/Debug

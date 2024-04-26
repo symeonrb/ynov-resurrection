@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using YnovResurrection.Services;
 using YnovResurrection.ViewModels.Pages;
 
 namespace YnovResurrection.Views.Pages
@@ -9,7 +10,7 @@ namespace YnovResurrection.Views.Pages
     /// </summary>
     public partial class SideMenuPage : Page
     {
-        private static MainWindow MainWindow { get => (MainWindow)Application.Current.MainWindow; }
+        static MainWindow MainWindow { get => (MainWindow)Application.Current.MainWindow; }
 
         public SideMenuPage()
         {
@@ -18,7 +19,10 @@ namespace YnovResurrection.Views.Pages
 
         private void Buildings_Click(object sender, RoutedEventArgs e)
         {
-            ModelListPage page = new(new BuildingsListPageViewModel());
+            var buildingService = (BuildingService)App.Me
+                                                                         .ServiceProvider
+                                                                         .GetService(typeof(BuildingService));
+            ModelListPage page = new(new BuildingsListPageViewModel(buildingService));
             MainWindow.MainPage.Navigate(page);
         }
 
