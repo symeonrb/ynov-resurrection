@@ -125,9 +125,9 @@ public class AppDb(IConfiguration configuration) : DbContext
                 var schools = SchoolService.Instance.List();
                 var buildings = new List<Building>
                 {
-                    new() { Id = Guid.NewGuid().ToString(), Address = "1 Swing St", School = schools.ElementAt(0) },
-                    new() { Id = Guid.NewGuid().ToString(), Address = "2 Swing St", School = schools.ElementAt(0) },
-                    new() { Id = Guid.NewGuid().ToString(), Address = "000 Nowhere St", School = schools.ElementAt(1) }
+                    new() { Id = Guid.NewGuid().ToString(), Address = "1 Swing St", School = null },
+                    new() { Id = Guid.NewGuid().ToString(), Address = "2 Swing St", School = null },
+                    new() { Id = Guid.NewGuid().ToString(), Address = "000 Nowhere St", School = null }
                 };
                 context.Buildings.AddRange(buildings);
 

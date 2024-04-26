@@ -24,8 +24,6 @@
                 <!-- Image -->
                 <Image Source="/Assets/Images/ynov_logo_black.jfif" Width="150" Height="75" HorizontalAlignment="Left"/>
 
-                <!-- Lien Accueil -->
-                <TextBlock Grid.Column="1" Margin="5" VerticalAlignment="Center"><Hyperlink Click="Accueil_Click" Foreground="#FFFFFDFA">Accueil</Hyperlink></TextBlock>
             </Grid>
 
             <!-- Frame -->

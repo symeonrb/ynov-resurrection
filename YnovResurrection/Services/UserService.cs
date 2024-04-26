@@ -30,6 +30,11 @@ public class UserService : AService
         CreateUser(firstName: "TeacherGuitar");
         CreateUser(firstName: "TeacherFrench");
 
+        //Admins
+
+        CreateAdmin(firstName: "Jean");
+
+
         bachelor1.Students =
         [
             _fakeData.Single(u => u.FirstName == "Ben"),
@@ -96,6 +101,25 @@ public class UserService : AService
         return user;
     }
 
+    public User CreateAdmin(string firstName, ICollection<StudentGroup>? studentGroups = null)
+    {
+        var admin = new User
+        {
+            FirstName = firstName,
+            LastName = "", 
+            Email = "admin",
+            Password = "root",
+            IsSuperAdmin = true,
+            StudentGroups = studentGroups ?? []
+        };
+
+        ApplyId(admin);
+
+        _fakeData.Add(admin);
+
+        return admin;
+    }
+    
     public void DeleteUser(User user) => _fakeData.Remove(user);
 
     public ICollection<User> List()
