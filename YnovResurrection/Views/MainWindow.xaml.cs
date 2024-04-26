@@ -11,14 +11,9 @@ namespace YnovResurrection.Views
         public MainWindow()
         {
             InitializeComponent();
-            SideMenuPage.Navigate(new SideMenuPage());
 
             MainPage.NavigationService.Navigate(new LoginPage());
         }
 
-        private void Accueil_Click(object sender, RoutedEventArgs e)
-        {
-            SideMenuPage.Navigate(new SideMenuPage());
-        }
     }
 }

@@ -56,6 +56,10 @@ namespace YnovResurrection.ViewModels.Pages
             if (token != null)
             {
                 MessageBox.Show(token);
+                var mainWindow = Application.Current.MainWindow as MainWindow;
+                mainWindow.MainPage.Content = null;
+                mainWindow.SideMenuPage.Navigate(new SideMenuPage());
+
 
             }
             else
