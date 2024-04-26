@@ -55,7 +55,7 @@ namespace YnovResurrection.ViewModels.Pages
 
             if (token != null)
             {
-                Token = token;
+                MessageBox.Show(token);
 
             }
             else

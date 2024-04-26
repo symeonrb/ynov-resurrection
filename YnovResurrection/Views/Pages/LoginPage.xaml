@@ -5,32 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Connexion" Height="450" Width="800">
-    <Grid>
-        <TextBlock Grid.Row="0" Text="Connexion" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"/>
-        <StackPanel Margin="20">
-            <Grid Margin="0,0,0,10" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Nom d'utilisateur:" Margin="0,0,10,0" VerticalAlignment="Center" Width="80"/>
-                <TextBox x:Name="UsernameTextBox" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" />
-            </Grid>
+	<Grid>
+		<TextBlock Grid.Row="0" Text="Connexion" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,0,0,420"/>
+		<StackPanel Margin="20">
+			<Grid Margin="0,0,0,10" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Text="Adresse mail:" Margin="262,25,395,0" VerticalAlignment="Top" Grid.Column="1"/>
+				<TextBox x:Name="UsernameTextBox" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Margin="262,46,262,-24" />
+			</Grid>
 
-            <Grid Margin="0,0,0,10" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="Mot de passe:" Margin="0,10,0,0"/>
-                <PasswordBox x:Name="PasswordTextBox" PasswordChanged="PasswordTextBox_PasswordChanged" Grid.Column="1" />
-            </Grid>
+			<Grid Height="92" >
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Text="Mot de passe:" Margin="260,17,352,-7" Grid.Column="1"/>
+				<PasswordBox x:Name="PasswordTextBox" PasswordChanged="PasswordTextBox_PasswordChanged" Margin="260,43,260,30" RenderTransformOrigin="0.5,0.5" Grid.Column="1" >
+					<PasswordBox.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleY="-1"/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</PasswordBox.RenderTransform>
+				</PasswordBox>
+			</Grid>
+			<Button Content="Se connecter" Click="LoginButton_Click" Width="80"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Se connecter" Click="LoginButton_Click"/>
-                <TextBlock x:Name="TokenGenerated" Margin="0,10,0,0" Text="{Binding Token}"/>
-            </StackPanel>
-
-        </StackPanel>
-    </Grid>
+		</StackPanel>
+	</Grid>
 </Page>
