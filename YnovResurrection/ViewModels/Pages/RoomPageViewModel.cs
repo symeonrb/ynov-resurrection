@@ -16,5 +16,7 @@ public class RoomPageViewModel
         Model = IModel.Clone(room);
     }
 
-    public ICollection<Building> Buildings => BuildingService.Instance.List();
+    public ICollection<Building> Buildings => ((BuildingService)App.Me
+        .ServiceProvider
+        .GetService(typeof(BuildingService))!).List();
 }

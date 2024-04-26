@@ -12,7 +12,6 @@ public class Equipment : IModel
     [Required]
     public string Type { get; set; }
 
-    [Required]
     public string? Tags { get; set; }
 
     public const string ChairType = "chair";

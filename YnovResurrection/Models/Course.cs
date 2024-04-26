@@ -17,7 +17,6 @@ public class Course : IModel
     [Required]
     public DateTime EndTime { get; set; }
 
-    [Required]
     public Room? Room { get; set; } = null;
 
     public bool IsRemote { get; set; } = false;
